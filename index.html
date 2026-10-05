@@ -3,563 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get LIT</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper: #e9dfd2;
-    --panel: #b6ac9b;
-    --panel-soft: #efe7da;
-    --ink: #3a322c;
-    --ink-soft: #5c534a;
-    --heading: #a54a0a;
-    --brand: #dcae08;
-    --teal: #059288;
-    --accent: #B47c0c;
-    --accent-strong: #a54a0a;
-    --inverse: #fdfaf4;
-    --band: #8f7913;
-    --line: #cabfa9;
-  }
-
-  * { box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--paper);
-    background-image:
-    linear-gradient(rgba(233, 223, 210, .72), rgba(233, 223, 210, .72)),
-    url('images/OldPaper.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    min-height: 100vh;
-    color: var(--ink);
-    font-family: 'Archivo', sans-serif;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; transition: none !important; }
-    html { scroll-behavior: auto; }
-  }
-
-  h1, h2, h3 {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    line-height: 1.05;
-    margin: 0;
-    color: var(--heading);
-  }
-
-  p { margin: 0 0 1em 0; }
-  p:last-child { margin-bottom: 0; }
-
-  .wordmark {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--heading);
-    letter-spacing: 0.01em;
-  }
-
-  .site { max-width: 920px; margin: 0 auto; }
-
-  header.masthead {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 2.2rem 2.5rem 1.4rem;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .masthead .tag {
-    font-size: 0.82rem;
-    color: var(--ink-soft);
-    text-align: right;
-    max-width: 260px;
-    line-height: 1.4;
-  }
-
-  .page {
-    position: relative;
-    padding: 3.4rem 2.5rem;
-    border-bottom: 1px solid var(--line);
-    overflow: hidden;
-  }
-
-  .page:last-of-type { border-bottom: none; }
-
-  /* Decorative thread */
-  .thread {
-    position: absolute;
-    top: 0;
-    right: -40px;
-    width: 260px;
-    height: 100%;
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  .thread path {
-    fill: none;
-    stroke: var(--teal);
-    stroke-width: 1.4;
-    stroke-linecap: round;
-    stroke-dasharray: 900;
-    stroke-dashoffset: 900;
-    animation: draw 2.4s ease-out forwards;
-  }
-
-  .thread circle {
-    fill: var(--brand);
-    opacity: 0;
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-
-  .thread .n1 { animation-delay: 0.9s; }
-  .thread .n2 { animation-delay: 1.5s; }
-  .thread .n3 { animation-delay: 2.1s; }
-
-  @keyframes draw { to { stroke-dashoffset: 0; } }
-  @keyframes fadeIn { to { opacity: 0.85; } }
-
-  /* Hero */
-  .hero h1 {
-    font-size: clamp(2rem, 4.4vw, 3rem);
-    max-width: 16ch;
-    margin-bottom: 1.4rem;
-  }
-
-  .hero .lead {
-    max-width: 56ch;
-    font-size: 1.05rem;
-    line-height: 1.65;
-    color: var(--ink-soft);
-  }
-
-  /* Clickable pillar squares */
-  .pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.4rem;
-    margin-top: 2.6rem;
-  }
-
-  .pillar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    aspect-ratio: 1;
-    padding: 1.4rem;
-    border: 1.5px solid var(--line);
-    border-radius: 4px;
-    text-decoration: none;
-    background: var(--inverse);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  .pillar:hover, .pillar:focus-visible {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 24px rgba(58, 50, 44, 0.18);
-    outline: 3px solid var(--focus-ring, var(--band));
-  }
-
-  .pillar .glyph {
-    font-family: 'Fraunces', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    line-height: 1;
-    color: var(--accent-strong);
-  }
-
-  .pillar .name {
-    font-family: 'Fraunces', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.05;
-    color: var(--ink);
-  }
-
-  .pillar .hint {
-    font-size: 0.78rem;
-    color: var(--ink-soft);
-    line-height: 1.4;
-    margin-top: 0.4rem;
-  }
-
-  .pillar.movement { border-top: 5px solid var(--teal); }
-  .pillar.meditation { border-top: 5px solid var(--brand); }
-  .pillar.testing { border-top: 5px solid var(--accent); }
-
-  .pillar.movement .glyph { color: var(--teal); }
-  .pillar.meditation .glyph { color: var(--accent); }
-  .pillar.testing .glyph { color: var(--accent-strong); }
-
-  /* Pillar sections */
-  .kicker {
-    font-size: 1.55rem;
-    margin-bottom: 2rem;
-  }
-
-  .pillar-anchor { scroll-margin-top: 2rem; }
-
-  .anchor-link {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: var(--teal);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    margin-bottom: 1.2rem;
-  }
-
-  .anchor-link:hover { border-bottom-color: var(--teal); }
-
-  .method-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 1.8rem;
-    align-items: center;
-    margin-bottom: 2.4rem;
-  }
-
-  .method-row:last-of-type { margin-bottom: 0; }
-
- 
-.imgph {
-  border: 1.5px dashed var(--line);
-  border-radius: 4px;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;              
-  padding: 0;                   
-  background: rgba(255,255,255,0.3);
-}
-
-.imgph img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;         
-  display: block;                
-}
-
-  .method-row h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .method-row p {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    max-width: 52ch;
-  }
-
-  .diff {
-    margin-top: 2.6rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--line);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.6rem 2.6rem;
-  }
-
-  .diff div {
-    flex: 1 1 220px;
-    font-size: 0.92rem;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    padding-left: 1rem;
-    border-left: 3px solid var(--teal);
-  }
-
-  .diff.movement div { border-left-color: var(--teal); }
-  .diff.meditation div { border-left-color: var(--brand); }
-  .diff.testing div { border-left-color: var(--accent-strong); }
-
-  /* Who we are */
-  .who .lead {
-    max-width: 60ch;
-    font-size: 1.02rem;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    margin-bottom: 2.4rem;
-  }
-
-  .bio {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 1.8rem;
-    align-items: center;
-    margin-bottom: 2.4rem;
-  }
-
-  .bio:last-of-type { margin-bottom: 0; }
-
-  .bio h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .bio p {
-    font-size: 0.94rem;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    max-width: 60ch;
-  }
-  .bio .imgph img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;    /* this is the line you need */
-  display: block;
-}
-
-  .closing {
-    margin-top: 2.4rem;
-    padding: 1.6rem 1.8rem;
-    background: var(--panel);
-    border-left: 4px solid var(--brand);
-    border-radius: 3px;
-    font-family: 'Fraunces', serif;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--ink);
-  }
-
-  /* CTA band */
-  .cta {
-    background: var(--heading);
-    color: var(--inverse);
-    padding: 3rem 2.5rem;
-  }
-
-  .cta h2 {
-    color: var(--inverse);
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
-  }
-  .cta h3 {
-    color: var(--inverse);
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
-  }
-  .cta .contact {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--panel-soft);
-  }
-
-  .cta .contact span {
-    display: inline-block;
-    font-weight: 500;
-    margin-right: 1.4rem;
-  }
-
-  footer {
-    padding: 1.6rem 2.5rem 2.2rem;
-    font-size: 0.78rem;
-    color: var(--ink-soft);
-    background: var(--paper);
-  }
-
-  @media (max-width: 640px) {
-    header.masthead { flex-direction: column; gap: 0.8rem; padding: 1.8rem 1.4rem 1.2rem; }
-    .masthead .tag { text-align: left; max-width: none; }
-    .page { padding: 2.4rem 1.4rem; }
-    .pillars { grid-template-columns: 1fr; gap: 1rem; }
-    .pillar { aspect-ratio: auto; min-height: 110px; }
-    .method-row { grid-template-columns: 1fr; }
-    .bio { grid-template-columns: 1fr; }
-    .imgph { aspect-ratio: 16/9; }
-    .thread { display: none; }
-    .cta { padding: 2.4rem 1.4rem; }
-  }
-
-  @media print {
-    body { background: white; }
-    .page { break-after: page; border-bottom: none; }
-    .thread { display: none; }
-  }
-  .thread { display: none; }
-</style>
+<title>Journey Home Vitals</title>
+<link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="site">
-
-  <header class="masthead">
-    <span class="wordmark">Get LIT — Living Inner Technologies</span>
-    <span class="tag">with Lev &amp; Ife ShepsuMa'at</span>
-  </header>
-
+<div id="header-mount"></div>
+<main>
   <!-- HERO -->
-  <section class="page hero" id="top">
-    <svg class="thread" viewBox="0 0 260 700" preserveAspectRatio="none">
-      <path d="M 230 0 C 180 90, 260 160, 190 240 C 120 320, 210 400, 150 480 C 100 550, 180 620, 140 700" />
-      <circle class="n1" cx="190" cy="240" r="4"/>
-      <circle class="n2" cx="150" cy="480" r="4"/>
-      <circle class="n3" cx="140" cy="680" r="4"/>
-    </svg>
-
-    <h1>Get LIT — Living Inner Technologies</h1>
-    <p class="lead">Three practices you carry with you for life. Each one asks nothing from the outside: no tools, no equipment, and once you learn them, no dependence on anyone else. Just your body, your attention, and skills that deepen the longer you tend to them.</p>
-
-    <div class="pillars">
-      <a class="pillar movement" href="#movement">
-        <span class="glyph">01</span>
-        <div>
-          <span class="name">Movement</span>
-          <p class="hint">Utilizing your own body's natural movement to restore and revitalize healthy function and self-expression.</p>
-        </div>
-      </a>
-      <a class="pillar meditation" href="#meditation">
-        <span class="glyph">02</span>
-        <div>
-          <span class="name">Meditation</span>
-          <p class="hint">Rooting into felt sense of wellness cultivated by gratitude that becomes available anywhere</p>
-        </div>
-      </a>
-      <a class="pillar testing" href="#muscle-testing">
-        <span class="glyph">03</span>
-        <div>
-          <span class="name">Muscle Testing</span>
-          <p class="hint">Cultivating the skill of inner discernment to both release any energetic blockages and nourish deeper vitality.</p>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- MOVEMENT -->
-  <section class="page" id="movement">
-    <svg class="thread" viewBox="0 0 260 700" preserveAspectRatio="none">
-      <path d="M 20 0 C 80 80, 10 170, 90 250 C 160 320, 60 400, 130 480 C 190 550, 100 620, 160 700" />
-      <circle class="n1" cx="90" cy="250" r="4"/>
-      <circle class="n2" cx="130" cy="480" r="4"/>
-      <circle class="n3" cx="160" cy="680" r="4"/>
-    </svg>
-
-    <a class="anchor-link" href="#top">&larr; Back to top</a>
-
-    <h2 class="kicker">Movement as Medicine</h2>
-
-    <div class="method-row">
-      <div class="imgph"><img src="images/Movement.jpg" alt="Demonstrating a self-resistance movement"></div>
-      <div>
-        <h3>Awakening the self healing power of movement
-
-        </h3>
-        <p>From breath awareness, to fascial reprogramming, to e-centric strength stretching, to natural movement patterns. This practice requires no external tools or weights; just the ground, the walls, and your own body weight are enough to build a transformational practice for anyone in any environment, with quick and long-lasting results.</p>
-      </div>
-    </div>
-
-    <div class="diff movement">
-      <div>Life-long tools to deepen your felt sense of connection in your body</div>
-      <div> Tapping into the body's innate self-healing capacity.</div>
-      <div>Awakening deep vitality and reclaiming movement potential. </div>
-    </div>
-  </section>
-
-  <!-- MEDITATION -->
-  <section class="page" id="meditation">
-    <svg class="thread" viewBox="0 0 260 700" preserveAspectRatio="none">
-      <path d="M 230 0 C 170 90, 240 170, 170 250 C 110 320, 200 400, 140 480 C 90 550, 170 620, 130 700" />
-      <circle class="n1" cx="170" cy="250" r="4"/>
-      <circle class="n2" cx="140" cy="480" r="4"/>
-      <circle class="n3" cx="130" cy="680" r="4"/>
-    </svg>
-
-    <a class="anchor-link" href="#top">&larr; Back to top</a>
-
-    <h2 class="kicker">Meditation through Felt Sense</h2>
-
-    <div class="method-row">
-      <div class="imgph"><img src="images/Meditation.jpeg" alt="A felt-sense meditation session"></div>
-      <div>
-        <h3>A very different kind of meditation.</h3>
-        <p>Utilizing gratitude, breath, and a deep understanding of how the mind works, each session cultivates and nourishes an inner sense of wellness that's always accessible - becoming ever more accessible the more it's practiced. Over time, that sense stops being something you visit during meditation. It becomes something you can reach anywhere, at any moment of the day.</p>
-      </div>
-    </div>
-
-    <div class="diff meditation">
-      <div>Grounded in the body's felt sense, not visualization</div>
-      <div>Grows more accessible with practice</div>
-      <div>Works with the mind, instead of against it</div>
-    </div>
-  </section>
-
-  <!-- MUSCLE TESTING -->
-  <section class="page" id="muscle-testing">
-    <svg class="thread" viewBox="0 0 260 700" preserveAspectRatio="none">
-      <path d="M 20 0 C 80 80, 10 170, 90 250 C 160 320, 60 400, 130 480 C 190 550, 100 620, 160 700" />
-      <circle class="n1" cx="90" cy="250" r="4"/>
-      <circle class="n2" cx="130" cy="480" r="4"/>
-      <circle class="n3" cx="160" cy="680" r="4"/>
-    </svg>
-
-    <a class="anchor-link" href="#top">&larr; Back to top</a>
-
-    <h2 class="kicker">Muscle Testing as Inner Discernment</h2>
-
-    <div class="method-row">
-      <div class="imgph"><img src="images/Muscle.jpg" alt="Photo: a muscle testing session"></div>
-      <div>
-        <h3>Energetic Hygeine and Attunement</h3>
-        <p>We teach the art and skill of muscle testing. How to do it yourself, and the different ways it can support your wellness journey. The skill develops inner discernment and hightened intuition that stays with you, even when receiving guidance from others. This practice opens the door to energetic tending: working directly with the emotional and energetic patterns held in the body, being able to release old blockages and reveal a path forward towards more viatlity.</p>
-      </div>
-    </div>
-
-    <div class="diff testing">
-      <div>Learn to trust the body's wisdom and intuition.</div><div>Pinpoint what will most benefit your body in the moment.</div>
-      <div>A doorway into energetic tending to release trapped emotions and energies.</div>
-    </div>
-  </section>
-
-  <!-- WHO WE ARE -->
-  <section class="page who">
-    <svg class="thread" viewBox="0 0 260 700" preserveAspectRatio="none">
-      <path d="M 230 0 C 170 90, 240 170, 170 250 C 110 320, 200 400, 140 480 C 90 550, 170 620, 130 700" />
-      <circle class="n1" cx="170" cy="250" r="4"/>
-      <circle class="n2" cx="140" cy="480" r="4"/>
-      <circle class="n3" cx="130" cy="680" r="4"/>
-    </svg>
-
-    <h2 class="kicker">Who are we</h2>
-
-    <div class="bio">
-      <div class="imgph"><img src="images/LevsProfile.jpg" alt="Lev's Profile"></div>
-      <div>
-        <h3>Lev</h3>
-        <p>Lev is a family man, vitality artist, natural movement trainer, transformational bodyworker, nourishment innovator, and co-creator of Journey Home Vitals. His path towards embodying wellness-based life was shaped early by childhood injuries, exposure to energetic healing, and formative experiences immersed in Nature, and growing and foraging his own food. From those early experiences Lev learned experientially as well as academically from diverse teachers and methods of healing such as massage therapy from Potomac Massage Training Institute, True Body Intelligence from Isaiah Fleissbach and Christopher Mayer, Indigenous African Healing from Traditional Healers of The Earth Center, Thai bodywork from Francisco Morales-Bermudez, and Capoeira Angola from Mestre Cobra Mansa, all of which inform his multifaceted healing practice. Professionally, Lev has worked in top-rated wellness spaces such as Zen and the City (Baltimore, MD), EarthFit Gym (Beaufort, SC), Synergy Yoga Retreats, and operated his own mobile massage and movement practice. He has helped hundreds of individuals recover from injuries, relieve chronic pain, and embody greater vitality through bodywork, energy healing, and natural movement. Fluent in five languages and continuously learning new ones, Lev is passionate about connecting with people of diverse cultures and walks of life, and the sacred relationships between the body, food, movement, healing, and nature, continuously learning from indigenous cultural wisdom to be able to experience a deeper sense of home on this Earth.</p>
-      </div>
-    </div>
-
-    <div class="bio">
-      <div class="imgph"><img src="images/IfesProfile.jpg" alt="Ife's Profile"></div>
-      <div>
-        <h3>Ife</h3>
-        <p>Ife has been on the path of seeking ways to support wellness from within out since she realized how deeply our stories affect our experience of reality, in learning about the placebo effect in her first college program over 20 years ago. This realization was seeded by her family's yearly practice of Kwanzaa and the reflection of the Nguzo Saba, or 7 principles, throughout her childhood. Her academic achievements include a master's degree in Transpersonal Psychology with emphases in Women's Spirituality and Creative Innovation from Sofia University, and a magna cum laude bachelor's in Media and Communication with emphases in Film and Sustainability from Maharishi International University. Through these studies and many self-directed others, she has discovered a life path of amplifying wellness that she celebrates in sharing.</p>
-      </div>
-    </div>
-
-    <div class="closing">
-      Together we have supported each other, learned from each other's passions and unique qualities, and joined forces to not only cultivate our own vitality and wellness as a family but to support you as well.
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <center>
-    <h2>To be well is to be home within yourself.</h2>
-    <h3>Join us on the journey going, being, & always home.</h3>
-    <p class="contact">
-      <span>JourneyHomeVitals@proton.me</span><span>443.202.3843</span><span>JourneyHomeVitals.com</span> </p>
-    </center>
-  </section>
-
-
+  <div class="hero" id="home">
+    
+    <div>
+      <h1>To be home, for us, isn't solely about being tied to one place. 
+<br>
+It's about cultivating home from within-out in <i>any place</i>. 
+<br>
+<br>
+<h2>Home, to us, is a deep state of wellness. </h2>
+<br>
+<h1>A wellness that we cultivate - for ourselves, for you, and for as many people as possible.
+</h1>
+<br>
+<br>
+<h1>So we can all feel more home on Earth.</h1>
 </div>
+    </div>
+  </div>
+  <section class="intro">
+    <h1>Welcome to</h1>
+    <img src="images/Logo.png" alt="Journey Home Vitals logo" id="intrologo">
+    <br>
+    <img src="images/LogoJustTextWhite.png" alt="Journey Home Vitals logo text" id="intrologopic">
+  </section>
+  <!-- B3 / MOV3 / GATH3R -->
+  <section class="pillars" id="offerings">
+    <div class="section-inner">
+      <p class="eyebrow">Our Offerings</p>
+      <h2 class="golden-bg">B3 · MOV3 · GATH3R</h2>
+      <p class="pillars-intro"> The three pillars at the heart of the journey. Each one unfolds below.</p>
+      <div class="pillar-grid">
+        <a class="card reveal" id="b3-card" href="B3.html">
+          <span class="placeholder-chip">Led by Ife ShepsuMa'at</span>
+         <div class="card-text"> <h3>B3</h3>
+          <p>Base Clarity - Meditation & Mindfullness guidance
+            <br>
+            Bridge Competence - Media and Communications support
+            <br>
+            Bloom Courage - Meta-Law Mastery entrustment
+          </p></div></a>
+        <a class="card reveal" id="mov3-card" href="MOV3.html">
+          <span class="placeholder-chip">Led by Lev ShepsuMa'at</span>
+          <div class="card-text"><h3>MOV3</h3>
+          <p>Get LIT - Living Inner Technologies Workshop
+            <br>
+            CAMO - Capoiera Angola Maat Oasis Training Group
+            <br>
+            1on1 - Virtual or In-Person Session
+          </p></div></a>
+        <a class="card reveal" id="gath3r-card" href="GATH3R.html">
+          <span class="placeholder-chip">Facilitated by both Ife & Lev</span>
+         <div class="card-text"><h3>GATH3R</h3>
+          <p>Stories, performed. 
+            <br>
+            <br>
+            Skills, supported. 
+            <br>
+            <br>
+            Solutions, offered.
+          </p>
+        </div> </a>
+        </div>
+  </section>
+
+
+  <!-- SUBSCRIBE — Brevo-ready -->
+  <section class="subscribe" id="connect">
+    <div class="section-inner">
+      <p class="eyebrow">Connect</p>
+      <h2>Join the conversation</h2>
+      <p>Stay in the loop as the journey unfolds.</p>
+      <div class="brevo-container">
+        <!-- DEMO FORM — replace with Brevo embed -->
+        <form class="demo" id="subForm">
+          <input type="email" id="email" placeholder="your@email.com" required aria-label="Email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-mount"></div>
+
+<div id="toast">Subscribed — welcome home. 🕊️</div>
+
+<script src="main.js">
+</script>
 </body>
 </html>
