@@ -75,28 +75,21 @@ It's about cultivating home from within-out in <i>any place</i>.
         </div> </a>
         </div>
   </section>
-
-
-  <!-- SUBSCRIBE — Brevo-ready -->
-  <section class="subscribe" id="connect">
-    <div class="section-inner">
-      <p class="eyebrow">Connect</p>
-      <h2>Join the conversation</h2>
-      <p>Stay in the loop as the journey unfolds.</p>
-      <div class="brevo-container">
-        <!-- DEMO FORM — replace with Brevo embed -->
-        <form class="demo" id="subForm">
-          <input type="email" id="email" placeholder="your@email.com" required aria-label="Email">
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
-    </div>
-  </section>
-</main>
+  <section class="form" id="connect">
+    <h1 class="form">Reach out to us.</h1>
+<form name="contact" method="POST" data-netlify="true" class="contact-form"
+      action="/thanks" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="contact">
+  <input type="text" name="name" placeholder="Your name" required aria-label="Your name">
+  <input type="email" name="email" placeholder="your@email.com" required aria-label="Email">
+  <textarea name="message" rows="4" placeholder="What's calling you?" required aria-label="Message"></textarea>
+  <button type="submit" class="btn-action">Send</button>
+</form>
+</section>
 
 <div id="footer-mount"></div>
 
-<div id="toast">Subscribed — welcome home. 🕊️</div>
+
 
 <script src="main.js">
 </script>

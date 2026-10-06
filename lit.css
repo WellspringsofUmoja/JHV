@@ -275,7 +275,7 @@
 
   /* CTA band */
   .cta {
-    background: var(--band);
+    background: var(--brand);
     color: var(--inverse);
     padding: 3rem 2.5rem;
   }

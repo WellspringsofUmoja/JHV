@@ -38,14 +38,6 @@ async function init() {
   }, { threshold: 0.2 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Demo form
-  document.getElementById('subForm')?.addEventListener('submit', e => {
-    e.preventDefault();
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
-    e.target.reset();
-  });
 
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
