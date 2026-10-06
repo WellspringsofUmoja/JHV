@@ -80,6 +80,9 @@ It's about cultivating home from within-out in <i>any place</i>.
 <form name="contact" method="POST" data-netlify="true" class="contact-form"
       action="thanks.html" netlify-honeypot="bot-field">
   <input type="hidden" name="form-name" value="contact">
+  <p class="hidden" style="display:none;">
+  <label>Leave this empty: <input name="bot-field"></label>
+</p>
   <input type="text" name="name" placeholder="Your name" required aria-label="Your name">
   <input type="email" name="email" placeholder="your@email.com" required aria-label="Email">
   <textarea name="message" rows="4" placeholder="What's calling you?" required aria-label="Message"></textarea>
