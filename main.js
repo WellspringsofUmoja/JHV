@@ -1,15 +1,22 @@
 // ===== Load shared header & footer FIRST, then wire everything up =====
 async function init() {
-  // Load includes
-  const headerResp = await fetch('header.html');
-  document.getElementById('header-mount').outerHTML = await headerResp.text();
+  // Load includes — only if the page actually has the mount point
+  const headerMount = document.getElementById('header-mount');
+  if (headerMount) {
+    const headerResp = await fetch('header.html');
+    if (headerResp.ok) {
+      headerMount.outerHTML = await headerResp.text();
+    }
+  }
 
-  const footerResp = await fetch('footer.html');
-  document.getElementById('footer-mount').outerHTML = await footerResp.text();
+  const footerMount = document.getElementById('footer-mount');
+  if (footerMount) {
+    const footerResp = await fetch('footer.html');
+    if (footerResp.ok) {
+      footerMount.outerHTML = await footerResp.text();
+    }
+  }
 
-  // ---- Everything below is your existing code, unchanged ----
-
-  // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const mainNav = document.querySelector('.main-nav');
 

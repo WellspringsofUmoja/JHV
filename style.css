@@ -87,18 +87,20 @@ h1 {
   .hero > div {
     margin-left: 1%;   
     margin-right: auto;
+    padding:0rem;
   }
 }
 
 @media (max-width: 760px) {
-  .hero > div {
+  .hero  {
     margin-left: 0;   
     margin-right: 0;
+   padding: 2rem; 
   }
 }
 @media (max-width: 760px) {}
 #intrologopic {
-  max-width: 100%;;
+  max-width: 100%;
   height: auto;
   display: block; 
   margin-inline: auto;
@@ -171,6 +173,14 @@ section { padding: 4.5rem 1.5rem; }
   letter-spacing: .22em;
   font-size: .75rem;
   color: var(--surface-alt);
+  font-weight: 700;
+  margin-bottom: .6rem;
+}
+.eyebrow-inverse {
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: .75rem;
+  color: var(--surface);
   font-weight: 700;
   margin-bottom: .6rem;
 }
@@ -501,4 +511,48 @@ color: var(--text-inverse); }
 .bottom h2,
 .bottom h1 {
 line-height: 1.0;
+color:var(--text-inverse);
+}
+
+.offerings{
+  display: grid;
+ 
+}
+.title-offerings{
+  text-align: center;
+  background-color: var(--surface-alt);
+}
+.title-offerings h1{
+  font-size: clamp(2.5rem, 3.0vw, 2.5rem);
+  color: var(--text-heading);
+  line-height: 1.0;
+}
+.intro-offerings {
+  background: var(--surface-alt);
+   text-align: center;
+   padding: 3.4rem;
+}
+
+/* ===== Progressive disclosure blocks (B3 page) ===== */
+.deep-dive {
+  margin-top: 1.2rem;
+  border: 1.5px dashed var(--badge);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.deep-dive summary {
+  cursor: pointer;
+  padding: .9rem 1.2rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+
+.deep-dive[open] summary {
+  border-bottom: 1.5px dashed var(--badge);
+}
+
+.deep-dive p {
+  padding: .2rem 1.4rem .4rem;
+  font-size: .95rem;
 }

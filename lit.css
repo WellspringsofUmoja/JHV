@@ -14,7 +14,7 @@
     background-attachment: fixed;
     min-height: 100vh;
     color: var(--ink);
-    font-family: 'Archivo', sans-serif;
+    font-family: var(--font-body);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -23,7 +23,7 @@
   }
 
   h1, h2, h3 {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-head);
     font-weight: 600;
     line-height: 1.05;
     margin: 0;
@@ -34,7 +34,7 @@
   p:last-child { margin-bottom: 0; }
 
   .wordmark {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-head);
     font-weight: 600;
     font-style: italic;
     font-size: 1.15rem;
@@ -42,7 +42,7 @@
     letter-spacing: 0.01em;
   }
 
-  .site { max-width: 920px; margin: 0 auto; }
+  .lit-site { max-width: 1020px; margin: 0 auto; }
 
   header.masthead {
     display: flex;
@@ -113,7 +113,7 @@
   }
 
   .JHVpillar .glyph {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-head);
     font-size: 1.6rem;
     font-weight: 600;
     line-height: 1;
@@ -121,7 +121,7 @@
   }
 
   .JHVpillar .name {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-head);
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1.05;
@@ -267,7 +267,7 @@
     background: var(--panel);
     border-left: 4px solid var(--brand);
     border-radius: 3px;
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-body);
     font-size: 1.05rem;
     line-height: 1.6;
     color: var(--ink);
