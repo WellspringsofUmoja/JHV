@@ -1,30 +1,45 @@
-/* ===== Design tokens with aliases for compatibility ===== */
+
+
+/* ===== Design tokens (named by role, not by color) ===== */
 :root {
-      --text-heading:  #a54a0a;
-      --ink:           #3a322c;
-      --surface-alt:   #e9dfd2;
-      --brand:         #dcae08;
-      --teal:          #059288;
-      --text-inverse:  #fdfaf4;
-      --bg:            #8f7913;
-      --surface:       #b6ac9b;
-      --accent:        #B47c0c;
-      --accent-strong: #a54a0a;
-      --badge:         #b6ac9b;
-      --band-dark:     #024743;
-      --focus-ring:    #059288;
-      --radius:        14px;
-      --font-head:     'IM Fell DW Pica', Georgia, 'Times New Roman', serif;
-      --font-body:     'Segoe UI', system-ui, sans-serif;
+  /* ---- Text ---- */
+  --text:              #3a322c;  /* body copy */
+  --text-strong:       #a54a0a;  /* headings, emphasized text */
+  --text-inverse:      #fdfaf4;  /* text on colored or dark surfaces */
+  --text-inverse-soft: #b6ac9b;  /* muted text on colored surfaces */
+  --text-soft:         #6b5d52;  /* dimmed body text (hints, captions) — NEW */
+  --text-warm:         #b47c0c;
 
-      /* Aliases for Get LIT compatibility (maps old names to current) */
-      --heading:       var(--text-heading);
-      --paper:         var(--surface-alt);
-      --panel:         var(--surface);
-      --inverse:       var(--text-inverse);
-      --band:          var(--bg);
+  /* ---- Surfaces ---- */
+  --background:        #e9dfd2;  /* outermost page background */
+  --section:           #b6ac9b;  /* cards, panels, chips */
+  --section-warm:      #b47c0c;  /* rich amber bands */
+  --section-strong:    #a54a0a;  /* rust bands (intro) */
+  --section-deep:      #024743;  /* deep bands (wisdom) */
 
+  /* ---- Chrome ---- */
+  --header-bg:         #e9dfd2;  /* sticky site header */
+  --topbar-bg:         #b47c0c;  /* announcement bar */
+
+  /* ---- Actions ---- */
+  --action:            #dcae08;  /* primary buttons */
+  --action-alt:        #059288;  /* secondary buttons, links */
+  --action-strong:     #a54a0a;  /* tertiary buttons (ghost, subscribe) — NEW */
+  --action-hover:      #b47c0c;  /* shared hover state */
+  --focus-ring:        #059288;  /* keyboard focus outlines */
+
+  /* ---- Decoration ---- */
+  --pop:               #b47c0c;  /* non-interactive accents: bars, glyphs — NEW */
+  --border:            #b6ac9b;  /* standard borders & dividers */
+  --border-strong:     #a54a0a;  /* heavy borders: inputs, card tops — NEW */
+
+  /* ---- Shape, depth, type ---- */
+  --radius:   14px;
+  --shadow:   0 6px 18px rgba(58, 50, 44, 0.18);  /* NEW — was used but never defined */
+  --font-head: 'IM Fell DW Pica', Georgia, 'Times New Roman', serif;
+  --font-body: 'Segoe UI', system-ui, sans-serif;
 }
+
 /* ===== Self-hosted fonts ===== */
 @font-face {
   font-family: 'IM Fell DW Pica';
@@ -50,7 +65,7 @@
 
 /* ===== Top bar ===== */
 .topbar {
-  background: var(--teal);
+  background: var(--topbar-bg);
   color: var(--text-inverse);
   text-align: center;
   padding: .55rem 1rem;
@@ -81,10 +96,11 @@
   align-items: center;
   justify-content: space-between;
   padding: .8rem 1.5rem;
-  background: var(--accent);
+  background: var(--header-bg);
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 3px 0 var(--section-warm);
 }
 
 .has-dropdown {
@@ -97,7 +113,7 @@
   left: 50%;                        /* push right edge to middle of parent */
   transform: translateX(-50%);      /* slide back by half dropdown's width */
   min-width: 190px;
-  background: var(--surface);
+  background: var(--section);
   border-radius: 0 0 10px 10px;
   box-shadow: var(--shadow);
   padding: .4rem;
@@ -113,16 +129,16 @@
 .dropdown a {
   display: block;
   padding: .5rem .8rem;
-  text-align: center;              /* ← your text-centering, restored */
-  color: var(--ink);
+  text-align: center;              /* text-centering, restored */
+  color: var(--text);
   text-decoration: none;
   font-size: .92rem;
   border-radius: 6px;
 }
 
 .dropdown a:hover {
-  background: var(--surface-alt);
-  color: var(--accent-strong);
+  background: var(--background);
+  color: var(--text-strong);
 }
 
 /* ===== Logo (text + image swap on scroll) ===== */
@@ -136,10 +152,10 @@
   font-family: var(--font-head);
   font-size: 1.25rem;
   font-weight: bold;
-  color: var(--text-heading);
+  color: var(--text-strong);
   text-decoration: none;
 }
-.logo-text span { color: var(--surface-alt); }
+.logo-text span { color: var(--text-warm); }
 
 .logo-img-only {
   display: none;                 /* hidden until the page is scrolled */
@@ -169,7 +185,7 @@
 .icon-link {
   background: none;       /* no more cream circle */
   border-radius: 0;       /* no shape constraint */
-  display: grid;           /* keep — harmless container for the img */
+  display: grid;           /* harmless container for the img */
   place-items: center;
   line-height: 0;          /* kills ghost space under images (baseline gap) */
 }
@@ -181,7 +197,7 @@
 }
 
 .icon-link:hover {
-  background: var(--accent);
+  background: var(--action-hover);
   color: var(--text-inverse);
   transform: scale(1.1);
 }
@@ -191,9 +207,8 @@
   gap:2.5rem;
 }
 
-.nav-item { 
-    position: relative;
-
+.nav-item {
+  position: relative;
 }
 
 .nav-btn {
@@ -201,7 +216,7 @@
   border: none;
   font: inherit;
   font-weight: 600;
-  color: var(--surface-alt);
+  color: var(--text-inverse);
   padding: .0rem .9rem;
   cursor: pointer;
   display: inline-flex;
@@ -217,29 +232,28 @@
 .nav-link:link {
    font-weight: 600;
    text-decoration: none;
-  color:var(--text-inverse);
- }      
-.nav-link:visited { 
-   font-weight: 600; 
-text-decoration: none;
-  color:var(--text-inverse);
-}    
-.nav-link:hover { 
+  color: var(--text-strong);
+}
+.nav-link:visited {
+   font-weight: 600;
+   text-decoration: none;
+  color: var(--text-soft);
+}
+.nav-link:hover {
    font-weight: 600;
    text-decoration: underline;
-  color: var(--brand)
-}      
-.nav-link:active {
-   font-weight: 600; 
-  text-decoration: none;
-  color:var(--text-inverse);
+  color: var(--action);
 }
-
+.nav-link:active {
+   font-weight: 600;
+   text-decoration: none;
+  color: var(--text-inverse);
+}
 
 .social { padding: .4rem .55rem; font-size: 1.05rem; }
 
 .btn-action {
-  background: var(--brand);
+  background: var(--action);
   color: var(--text-inverse);
   padding: .55rem 1.3rem;
   border-radius: 999px;
@@ -252,6 +266,7 @@ text-decoration: none;
   outline: none;
 }
 .btn-action:hover { transform: scale(1.1); }
+
 /* ===== Responsive ===== */
 .menu-toggle {
   display: none;
@@ -267,14 +282,13 @@ text-decoration: none;
     text-align: center;
   }
 
-
   .menu-toggle {
     display: block;
     order: 2;
     border: none;
     font-size: 1.8rem;
     cursor: pointer;
-    color: var(--text-heading);
+    color: var(--text-strong);
     padding: .5rem;
   }
 
@@ -292,9 +306,9 @@ text-decoration: none;
     background-image: none;
     background: linear-gradient(
       135deg,
-      var(--surface-alt) 0%,
-      var(--brand) 50%,
-      var(--teal) 100%
+      var(--background) 0%,
+      var(--action) 50%,
+      var(--action-alt) 100%
     );
     background-attachment: scroll;
     min-height: 70vh;
@@ -308,9 +322,9 @@ text-decoration: none;
   .dropdown {
     position: static;
     box-shadow: none;
-    background: var(--badge);
+    background: var(--section);
     padding: 0 .8rem;
-    transform: none; 
+    transform: none;
   }
 
   .nav-btn {
