@@ -23,19 +23,20 @@ async function init() {
   menuToggle?.addEventListener('click', () => {
     mainNav?.classList.toggle('open');
 
-  if (mainNav?.classList.contains('open')) {
-    menuToggle.textContent = '✕';
-    menuToggle.setAttribute('aria-label', 'Close menu');
-  } else {
-    menuToggle.textContent = '☰';
-    menuToggle.setAttribute('aria-label', 'Menu');
-  }
-});
+    if (mainNav?.classList.contains('open')) {
+      menuToggle.textContent = '✕';
+      menuToggle.setAttribute('aria-label', 'Close menu');
+    } else {
+      menuToggle.textContent = '☰';
+      menuToggle.setAttribute('aria-label', 'Menu');
+    }
+  });
+
   mainNav?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mainNav.classList.remove('open');
       menuToggle.textContent = '☰';
-    menuToggle.setAttribute('aria-label', 'Menu');
+      menuToggle.setAttribute('aria-label', 'Menu');
     });
   });
 
@@ -45,24 +46,78 @@ async function init() {
   }, { threshold: 0.2 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-
   // Smooth scrolling for anchor links
+  // EDIT: links inside .expandable sections are SKIPPED — their hash
+  // changes drive the accordion, and preventDefault would kill them.
   document.querySelectorAll('a[href^="#"]').forEach(a => {
+    if (a.closest('.expandable')) return;   // <-- accordion territory, leave alone
+
     a.addEventListener('click', ev => {
       const el = document.querySelector(a.getAttribute('href'));
       if (el) { ev.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
 
-  // Header logo swap on scroll
+  // Header state: frosted look, plus hide-on-scroll-down / show-on-scroll-up
   const header = document.querySelector('.site-header');
+  let lastScrollY = window.scrollY;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    const y = window.scrollY;
+
+    // Frosted background after 50px (desktop + mobile)
+    header?.classList.toggle('scrolled', y > 50);
+
+    // Hide when scrolling down, reappear when scrolling up (mobile)
+    const menuOpen = mainNav?.classList.contains('open');
+    const goingDown = y > lastScrollY + 5;
+    const goingUp   = y < lastScrollY - 5;
+
+    if (goingDown && y > 80 && !menuOpen) {
+      header.classList.add('nav-hidden');
+    } else if (goingUp || menuOpen) {
+      header.classList.remove('nav-hidden');
     }
+
+    lastScrollY = y;
   });
 }
+
+// ===== Expandable rails (accordion engine) =====
+// EDIT: no longer scoped to #techniques — works for ANY section
+// with class="expandable" (Techniques, Tales, Tools, etc.)
+(function () {
+  // Bail if this page has no expandable rails at all
+  if (!document.querySelector('.expandable')) return;
+
+  const panels = document.querySelectorAll('.tech-detail');
+  const cards  = document.querySelectorAll('.tech-card');
+
+  // The one rule that runs everything:
+  // a panel is visible iff its data-for matches the URL hash.
+  function syncFromHash() {
+    const key = location.hash.slice(1);          // "" or "teeth-wellness"
+    panels.forEach(p => { p.hidden = (p.dataset.for !== key); });
+    cards.forEach(c => { c.classList.toggle('is-open', c.id === key); });
+  }
+
+  window.addEventListener('hashchange', syncFromHash);
+
+  // Click-twice-to-close: if this card is already open,
+  // cancel the navigation and clear the hash instead.
+  cards.forEach(card => {
+    card.addEventListener('click', ev => {
+      if (card.id === location.hash.slice(1)) {
+        ev.preventDefault();
+        history.replaceState(null, '', location.pathname + location.search);
+        syncFromHash();                          // nothing matches → all close
+      }
+    });
+  });
+
+  // Run once on load so shared links like
+  // GATH3R.html#teeth-wellness arrive open.
+  syncFromHash();
+})();
 
 init();

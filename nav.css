@@ -38,6 +38,7 @@
   --shadow:   0 6px 18px rgba(58, 50, 44, 0.18);  /* NEW — was used but never defined */
   --font-head: 'IM Fell DW Pica', Georgia, 'Times New Roman', serif;
   --font-body: 'Segoe UI', system-ui, sans-serif;
+  --topbar-h: 38px; 
 }
 
 /* ===== Self-hosted fonts ===== */
@@ -71,7 +72,12 @@
   padding: .55rem 1rem;
   font-size: .85rem;
   letter-spacing: .04em;
+  height: var(--topbar-h); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
 }
+
 
 .topbar a {
   color: inherit;
@@ -95,13 +101,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: .8rem 1.5rem;
-  background: var(--header-bg);
-  position: sticky;
-  top: 0;
+  background: transparent;
+  position: fixed;
+  top: var(--topbar-h);
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
   z-index: 100;
-  box-shadow: 0 3px 0 var(--section-warm);
+  transition: background-color .3s ease, top .3s ease, padding .3s ease, box-shadow .3s ease;
 }
+
+ .site-header.scrolled {
+      background-color: color-mix(in srgb, var(--section) 75%, transparent);
+      padding: 0.75rem 2rem;
+      box-shadow:
+        0 1px 3px rgba(58, 50, 44, 0.15),     /* tight, close contact shadow */
+        0 6px 16px rgba(58, 50, 44, 0.12); 
+      top: 0;
+    }
 
 .has-dropdown {
   position: relative;
@@ -137,7 +156,7 @@
 }
 
 .dropdown a:hover {
-  background: var(--background);
+  background: var(--border);
   color: var(--text-strong);
 }
 
@@ -204,7 +223,8 @@
 
 .main-nav {
   display: flex;
-  gap:2.5rem;
+  gap:1rem;
+  flex-wrap: wrap; 
 }
 
 .nav-item {
@@ -232,7 +252,7 @@
 .nav-link:link {
    font-weight: 600;
    text-decoration: none;
-  color: var(--text-strong);
+  color: var(--text-soft);
 }
 .nav-link:visited {
    font-weight: 600;
@@ -242,7 +262,7 @@
 .nav-link:hover {
    font-weight: 600;
    text-decoration: underline;
-  color: var(--action);
+  color: var(--action-strong);
 }
 .nav-link:active {
    font-weight: 600;
@@ -253,7 +273,7 @@
 .social { padding: .4rem .55rem; font-size: 1.05rem; }
 
 .btn-action {
-  background: var(--action);
+  background: var(--action-strong);
   color: var(--text-inverse);
   padding: .55rem 1.3rem;
   border-radius: 999px;
@@ -263,9 +283,17 @@
   flex-grow: 0;
   white-space: nowrap;
   border: none;
-  outline: none;
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+  border: 1.5px solid transparent; 
+  width: auto;
+
+  
 }
-.btn-action:hover { transform: scale(1.1); }
+.btn-action:hover {   
+  background: transparent;
+  color: var(--text-soft);
+  border-color: var(--text-soft);  
+}
 
 /* ===== Responsive ===== */
 .menu-toggle {
@@ -273,18 +301,34 @@
   background: none;
 }
 
+/* Utility: hide the mobile copy by default */
+.mobile-only { display: none; }
+
+
+
 @media (max-width: 760px) {
   .site-header {
+    flex-direction: row;              /* back to a row */
+    justify-content: space-between;
     flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
+    position: sticky;    /* back to taking up space when expanded */
+    top: 0;
+    left: 0;
+    right: 0; 
+    transition: transform .3s ease, background-color .3s ease;
   }
+  .site-header.nav-hidden {
+    transform: translateY(-100%);   /* slides above the viewport */
+  }
+  .mobile-only { display: inline-block; }
+  .desktop-only { display: none; }
 
+   
   .menu-toggle {
     display: block;
-    order: 2;
+    order: 3;
     border: none;
     font-size: 1.8rem;
     cursor: pointer;
@@ -295,12 +339,27 @@
   /* Slightly smaller logo image on phones */
   .logo-img-only img { width: 40px; }
 
-  .main-nav { display: none; }
-  .main-nav.open {
-    display: flex;
+    .main-nav {
+    display: none;
+    position: absolute;        /* hang off the bottom of the sticky header */
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;     /* items align right, under the hamburger */
+    background: var(--header-bg);
+    box-shadow: var(--shadow);
+    padding: .5rem 1.2rem 1.2rem;
   }
+
+  .main-nav.open { display: flex; }
+
+  /* Contact sits at the bottom of the list */
+  .main-nav .btn-action {
+    margin: 1rem .5rem 0;      /* re-apply the mobile margin HERE, not base */
+    align-self: center; 
+  }
+
 
   .hero {
     background-image: none;
@@ -312,6 +371,7 @@
     );
     background-attachment: scroll;
     min-height: 70vh;
+    padding-top: 6rem; 
   }
 
   .nav-item {
@@ -328,14 +388,11 @@
   }
 
   .nav-btn {
-    width: 100%;
+    width: auto;
     text-align: left;
     padding: .8rem 0;
   }
-
-  .btn-action {
-    width: auto;
-    margin-top: .6rem;
-    text-align: center;
+  .topbar {
+    padding: 2rem;
   }
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GATH3R — Journey Home Vitals</title>
+  <title>GATHER — Journey Home Vitals</title>
 
   <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="style.css">
@@ -15,11 +15,11 @@
   <div class="site">
 
     <!-- ===== 1. INTRO ===== -->
-    <section class="page" id="intro">
+    <section class="GATHER-lead" id="intro">
       <div class="section-inner">
-        <p class="eyebrow">Offered by Ife &amp; Lev ShepsuMa'at</p>
-        <h1 class="page-title">GATH3R</h1>
-        <p class="lead">GATH3R is where Lev and Ife bring our skills, passions, and proclivities together to offer our work to group settings in three ways.</p>
+        <h1 class="page-title">GATHER</h1>
+        <h2 class="offerings-title">For intergenerational village weavers ready to reclaim proactive interculture co-creation: gather around tales performed, techniques supported, and tools offered - so that shared w.i.s.dom becomes shared practice.</h2>
+</section>
 
         <div class="pillar-grid">
           <a class="card reveal" href="#tales">
@@ -99,85 +99,153 @@
       
     </section>
 
-    <section class="page" id="techniques">
+  <section class="page expandable" id="techniques">
   <div class="section-inner">
-    <p class="eyebrow">Skills, supported</p>
+    <p class="eyebrow">Techniques, supported</p>
     <h2>Techniques</h2>
 
     <p class="lead">We guide a group of people through a process that leaves them confident they can apply the inner technology they've learned — grounded in their own skill set and their own clarity. Catered to any age range, from simple introductions to deep-dives for those who know the foundations.</p>
-<br>
-    <!-- Search bar -->
+    <br>
+
+    <!-- Search bar (unchanged — your existing filter still works) -->
     <div class="scroll-search">
       <input type="search" id="scrollSearch" placeholder="Search techniques… e.g. teeth, camping, hair" aria-label="Search techniques">
     </div>
 
-    <!-- The horizontal rail -->
+    <!-- The horizontal rail — cards are now <a> anchors, alphabetized -->
     <div class="scroll-rail-wrap">
       <div class="scroll-rail" id="techRail">
-     
 
-        <div class="card scroll-card" data-search="ancestral nutrition modern family picky eater microbiome">
+        <a class="card scroll-card tech-card" id="ancestral-nutrition" href="#ancestral-nutrition"
+           data-search="ancestral nutrition modern family picky eater microbiome">
           <div class="card-text">
             <h3>Ancestral Nutrition</h3>
             <span class="placeholder-chip">For the modern family</span>
             <p>From picky eater to nourished foundation — sneaking in nourishing foods and restructuring the microbiome from the inside out, with very little resistance.</p>
           </div>
-        </div>
+        </a>
 
-        <div class="card scroll-card" data-search="ancestral nutrition 101 basics weston price foundation principles">
+        <a class="card scroll-card tech-card" id="ancestral-nutrition-101" href="#ancestral-nutrition-101"
+           data-search="ancestral nutrition 101 basics weston price foundation principles">
           <div class="card-text">
             <h3>Ancestral Nutrition 101</h3>
             <span class="placeholder-chip">The basics</span>
             <p>The foundations from ten-plus years studying the Weston A. Price principles — how people who lived this way for generations nourished themselves, all over the world.</p>
           </div>
-        </div>
+        </a>
 
-        <div class="card scroll-card" data-search="teeth wellness remineralize fluoride decay dentistry weston price">
-          <div class="card-text">
-            <h3>Teeth Wellness</h3>
-            <p>Transitioning from toxin-laden fluoride to re-mineralizing teeth in simple ways — what we've lived, learned, and continue to study.</p>
-          </div>
-        </div>
-
-        <div class="card scroll-card" data-search="capoeira angola history music movement">
-          <div class="card-text">
-            <h3>Capoeira Angola</h3>
-            <p>Introducing Capoeira Angola through its history, music, and movement.</p>
-          </div>
-        </div>
-
-        <div class="card scroll-card" data-search="earth skills natural incense harvesting bundling palmetto weaving wild herb foraging walks">
-          <div class="card-text">
-            <h3>Earth Skills</h3>
-            <p>Natural incense harvesting and bundling, palmetto weaving, and wild herb foraging walks.</p>
-          </div>
-        </div>
-
-        <div class="card scroll-card" data-search="camping beginner families first trip tent backyard forest">
+        <a class="card scroll-card tech-card" id="camping-families" href="#camping-families"
+           data-search="camping beginner families first trip tent backyard forest">
           <div class="card-text">
             <h3>Camping for Beginner Families</h3>
             <p>From backyard first-tent to forest nights — walking you every step of the way, so nature connection feels nourishing and easeful.</p>
           </div>
-        </div>
+        </a>
 
-        <div class="card scroll-card" data-search="life skills space maintenance cleaning non-toxic">
+        <a class="card scroll-card tech-card" id="capoeira-angola" href="#capoeira-angola"
+           data-search="capoeira angola history music movement">
+          <div class="card-text">
+            <h3>Capoeira Angola</h3>
+            <p>Introducing Capoeira Angola through its history, music, and movement.</p>
+          </div>
+        </a>
+
+        <a class="card scroll-card tech-card" id="earth-skills" href="#earth-skills"
+           data-search="earth skills natural incense harvesting bundling palmetto weaving wild herb foraging walks">
+          <div class="card-text">
+            <h3>Earth Skills</h3>
+            <p>Natural incense harvesting and bundling, palmetto weaving, and wild herb foraging walks.</p>
+          </div>
+        </a>
+
+        <a class="card scroll-card tech-card" id="space-maintenance" href="#space-maintenance"
+           data-search="life skills space maintenance cleaning non-toxic">
           <div class="card-text">
             <h3>Space Maintenance</h3>
             <p>Simple, inexpensive, non-toxic methods of cleaning and maintaining one's living space — ever increasingly sovereign.</p>
           </div>
-        </div>
+        </a>
 
-        <div class="card scroll-card" data-search="life skills spiraling hair maintenance natural hair">
+        <a class="card scroll-card tech-card" id="spiraling-hair" href="#spiraling-hair"
+           data-search="life skills spiraling hair maintenance natural hair">
           <div class="card-text">
             <h3>Spiraling Hair Maintenance</h3>
             <p>Two techniques fine-tuned over eight years — gentle, easeful, light. Without drama, tears, or pain; supporting freedom and play.</p>
           </div>
-        </div>
+        </a>
+
+        <a class="card scroll-card tech-card" id="teeth-wellness" href="#teeth-wellness"
+           data-search="teeth wellness remineralize fluoride decay dentistry weston price">
+          <div class="card-text">
+            <h3>Teeth Wellness</h3>
+            <p>Transitioning from toxin-laden fluoride to re-mineralizing teeth in simple ways — what we've lived, learned, and continue to study.</p>
+          </div>
+        </a>
 
       </div>
       <p class="rail-hint">Scroll for more →</p>
       <p class="rail-empty" hidden>No techniques match that search.</p>
     </div>
+
+    <!-- ===== Detail panels — OUTSIDE the rail, in normal flow =====
+         Order matches the cards above. Each panel's data-for must
+         equal its card's id. -->
+    <div class="tech-detail" data-for="ancestral-nutrition" hidden>
+      <h3>Ancestral Nutrition — for the modern family</h3>
+      <p>Here we share the techniques we've utilized as a family to nourish our children — from picky eater to much less picky — restructuring the microbiome from the inside out with very little resistance. No matter who we're feeding, we know how to not only sneak nourishing foods in, but to build a deeply nourishing foundation that lasts.</p>
+      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
+    </div>
+
+    <div class="tech-detail" data-for="ancestral-nutrition-101" hidden>
+      <h3>Ancestral Nutrition 101 — the basics</h3>
+      <p>Here we share all that we've learned through studying with the Weston A. Price Foundation over the last ten to twenty years — understanding how our ancestors and the ones who lived on the Earth nourished themselves all over the world, and the basic principles they all share. This is one of the purest methods of science there is: studying people who have lived this way for generations, and witnessing what happens when one of them changes — not just one people, but many, all over the world.</p>
+      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
+    </div>
+
+    <div class="tech-detail" data-for="camping-families" hidden>
+      <h3>Camping for Beginner Families</h3>
+      <p>We have many friends that we have taken on their first camping trip — whether meeting them in the forest or simply joining them in their backyard with an extra tent and a smiling face. We love to help people have nourishing, easeful, even deep experiences connecting with their capacity to connect with nature, no matter where they are — from setting up your tent, to the systems you can utilize to be comfortable through the night, to how to nourish yourself rising from the experience, and all the many things in between.</p>
+      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
+    </div>
+
+    <div class="tech-detail" data-for="capoeira-angola" hidden>
+      <h3>Capoeira Angola</h3>
+      <p>An introduction to Capoeira Angola through its history, music, and movement — a living tradition carried for generations.</p>
+      <p>What other art form or practice do you know of that combines martial art, dance, music, poetry, healing, ritual, folklore, acrobatics, improvisation, strategy, bio-mimicry, intercultural connection, and spirituality; and is even inclusive to anyone regardless of age, ethnicity, religion, or identity. This is the beauty of Capoeira Angola, the Afro-Brazilian freedom fighting art form that was and is still used to this day to liberate and empower the bodies, minds, spirits, and communities of its practitioners from oppression and struggle. You will often see it's practitioners full of joy, smiles, and laughter, and among them, the art is called a "jogo" or game, where Capoeira is played. 
+      <br>
+      Lev has been a devoted practitioner of the art for over a decade primarily as a student of Mestre Cobra Mansa, as well as other teachers along the way most notably Ras Tre Subira, Mastre Skher Brown, and ContraMestre Stefan Bonitz. During that time, Lev has taught and worked with Baltimore City Youth, performed with the Dancing Warriors, a Capoeira Edu-tainment Group at Baltimore City Schools, and is raising his own children with Capoeira Angola as a way of life. Workshops are customized to the group, taking age and experience level into account and invite the participants in to a new world in which they can explore a new way of moving their bodies, connecting with friends, and a cultural richness that transcends language barriers and body types.
+      <br>
+      Book a Capoeira Angola Experience for a memorable one of a kind taste of this rich cultural art that will leave you feeling connected, empowered, and enlivened to yourselves, to each other, and to nature itself.</p>
+      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
+    </div>
+
+    <div class="tech-detail" data-for="earth-skills" hidden>
+      <h3>Earth Skills</h3>
+      <p><strong>Natural incense harvesting and bundling:</strong> to walk around the forest and not only see what can be used for food or tools, but to see the potential of something to be burned — and to find plants you can turn into cordage to bundle your incense. From the moments where there's a smell we don't like, to the moments we want to bring in a smell we do — the smoke is a powerful tool, and knowing how to make fragrant wreaths from the Earth around you is a really powerful skill to have.</p>
+      <p><strong>Palmetto weaving:</strong> a skill you can find in many situations, not just with palmetto fronds but with any plant that grows a certain way — weaving baskets, hats, and mats.</p>
+      <p><strong>Wild herb foraging walks:</strong> we love to learn the land, the green allies that nourish us and give us what we need throughout the day — an experiential walk discovering what's in the environment we're sharing, even using some of these herbs in teas and meals in the moment.</p>
+      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
+    </div>
+
+    <div class="tech-detail" data-for="space-maintenance" hidden>
+      <h3>Space Maintenance</h3>
+      <p>Simple methods of cleaning and maintaining one's living space that are inexpensive, non-toxic, and ever increasingly more sovereign.</p>
+      <p>[Expand this section with your fuller description.]</p>
+      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
+    </div>
+
+    <div class="tech-detail" data-for="spiraling-hair" hidden>
+      <h3>Spiraling Hair Maintenance</h3>
+      <p>Here we offer two techniques that we have fine-tuned over the last eight years that support easy processing of spiraling hair in a way that is gentle, easeful, and light — that doesn't require drama, tears, or pain, but supports freedom and play. If this resonates with you, we would love to share it.</p>
+      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
+    </div>
+
+    <div class="tech-detail" data-for="teeth-wellness" hidden>
+      <h3>Teeth Wellness</h3>
+      <p>Through many hard lessons and some deeply celebrated successes, we have realized how to begin transitioning from toxic-laden fluoride and misunderstanding around nutrition to re-mineralizing our teeth in simple ways with tools we can have on hand. We're not acting like we know everything — but we have gone through the trenches and come out having re-mineralized, paused decay, and witnessed it not returning. We continue to study with the dentists and wise people carrying forward the work of Weston Price, and we can teach you what we have learned.</p>
+      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
+    </div>
+
   </div>
 </section>
     <!-- ===== 4. TOOLS ===== -->
@@ -211,9 +279,9 @@
       </div>
     </section>
 
-    <section class="rr rr--gath3r">
+    <section class="rr rr--GATHER page">
   <h2>Rates &amp; Exchange</h2>
-  <p class="rr-lead">GATH3R works on the same principle as everything we do: reciprocity, spoken out loud. We can talk about cost directly and early.</p>
+  <p class="rr-lead">GATHER works on the same principle as everything we do: reciprocity, spoken out loud. We can talk about cost directly and early.</p>
 
   <h3>The shape of the work</h3>
   <p>This work is project-based. Each gathering is priced as itself — the workshop, the performance, the full arc of what we&rsquo;re making together — not by the hour. Time is a tool here, not the measure.</p>

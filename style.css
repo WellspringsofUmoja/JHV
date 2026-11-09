@@ -1,7 +1,4 @@
-/* =====================================================
-   MAIN CONTENT STYLESHEET — hero, sections, forms, cards
-   Depends on: header-nav.css (tokens + nav must load first)
-   ===================================================== */
+
 
 /* Global reset & base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,7 +10,7 @@ body {
   background: var(--background);
   background-image:
     linear-gradient(rgba(233, 223, 210, .72), rgba(233, 223, 210, .72)),
-    url('images/OldPaper.jpg');
+    url('images/Lev&Boys.jpeg');
   background-size: cover;
   background-attachment: fixed;
   color: var(--text);
@@ -27,7 +24,6 @@ h1, h2, h3 {
   margin-bottom: 1.2rem;
 }
 
-h1 { line-height: 3; }
 
 /* ===== Hero ===== */
 .hero {
@@ -38,7 +34,8 @@ h1 { line-height: 3; }
   align-items: flex-start;
   text-align: center;
   padding: 4rem 10rem;
-  background-image:url('images/HeroBG.jpg');
+  background-image: linear-gradient(rgba(233, 223, 210, .72), rgba(186, 117, 26, 0.72)),
+  url('images/Ife&Aiye.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -58,7 +55,7 @@ h1 { line-height: 3; }
   font-family: 'Quin', Georgia, serif;
   font-size: clamp(1.5rem, 2.0vw, 2.0rem);
   color: var(--text-inverse);
-  max-width: 37ch;
+  max-width: 50ch;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.15;
@@ -86,14 +83,7 @@ h1 { line-height: 3; }
   flex-wrap: wrap;
 }
 
-#soon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 4rem 10rem;
-}
+
 
 /* ===== Responsive breakpoints ===== */
 @media (max-width: 1024px) {
@@ -176,7 +166,23 @@ h1 { line-height: 3; }
 
 /* ===== Section shell ===== */
 section { padding: 1.5rem 1.5rem; }
+
 .section-inner { max-width: 1000px; margin: 0 auto; }
+
+.sectionlight {
+  background-color: var(--section);
+  padding: 5rem;
+
+}
+
+.sectionlighttrans {
+  background-color: color-mix(in srgb, var(--section) 75%, transparent);
+  padding: 5rem;
+}
+.sectionwarmtrans {
+  background-color: color-mix(in srgb, var(--section-warm) 75%, transparent);
+  padding: 5rem;
+}
 
 .eyebrow {
   text-transform: uppercase;
@@ -193,6 +199,7 @@ section { padding: 1.5rem 1.5rem; }
   color: var(--section);
   font-weight: 700;
   margin-bottom: .6rem;
+  margin-top: 1rem;
 }
 
 /* ===== Panel nav ===== */
@@ -238,7 +245,6 @@ section { padding: 1.5rem 1.5rem; }
 }
 
 .intro {
-  background: var(--section);
   text-align: center;
 }
 .intro h1 {
@@ -251,7 +257,8 @@ section { padding: 1.5rem 1.5rem; }
   border-radius: 14px;
 }
 #intrologopic {
-  width: 750px;
+  max-width: 100%; 
+  height: auto;
   border-radius: 14px;
 }
  @media (max-width: 760px) {
@@ -265,8 +272,8 @@ section { padding: 1.5rem 1.5rem; }
   display: block;
   margin-inline: auto;
 }
-/* ===== Three pillars: B3 / MOV3 / GATH3R ===== */
-.pillars { background: var(--section-warm); }
+/* ===== Three pillars: BE / MOVE / GATHER ===== */
+
 .pillar-grid {
   display: flex;
   flex-wrap: wrap;
@@ -294,9 +301,9 @@ section { padding: 1.5rem 1.5rem; }
    border-top-color: var(--action-hover); 
 }
 
-#b3-card { border-top-color: var(--action); }
-#mov3-card { border-top-color: var(--action-alt); }
-#gath3r-card { border-top-color: var(--section-strong); }
+#BE-card { border-top-color: var(--action); }
+#MOVE-card { border-top-color: var(--action-alt); }
+#GATHER-card { border-top-color: var(--section-strong); }
 
 a.card:hover { transform: translateY(-6px); }
 .card h3 {
@@ -337,7 +344,7 @@ a.card {
 
 /* ===== WISDOM band ===== */
 .wisdom {
-  background: var(--section-deep);
+  background: var(--section);
   color: var(--text-inverse);
 }
 .wisdom h2 { color: var(--text-inverse); }
@@ -447,9 +454,6 @@ footer a { color: var(--text-inverse); }
   font-size: 1.0rem;
 }
 
-.form {
-  background-color: var(--text-inverse);
-}
 
 .form h1 {
   color: var(--text-strong);
@@ -463,6 +467,9 @@ footer a { color: var(--text-inverse); }
 }
 
 /* ===== Bio layout (photo beside text) ===== */
+.who{
+  margin-top:5rem;
+}
 .who .lead {
   max-width: 100%;
   font-size: 1.02rem;
@@ -470,7 +477,7 @@ footer a { color: var(--text-inverse); }
   margin-bottom: 2.4rem;
 }
 
-.page.who h1 {
+.page .who h1 {
   color: var(--section-strong);
 }
 
@@ -534,6 +541,55 @@ footer a { color: var(--text-inverse); }
 .page-link:hover {
   color: var(--action-alt);
 }
+/* Hidden means hidden — guards against later display rules
+   overriding the browser default */
+[hidden] { display: none !important; }
+
+/* Anchor cards: neutralize link styling and give hash-jump room
+   below your fixed header. Your [id] rule already does 90px —
+   this targets just the rail cards to be explicit. */
+.expandable a.scroll-card {
+  text-decoration: none;
+  color: inherit;
+  scroll-margin-top: 6rem;
+}
+
+/* Highlight the card whose panel is open */
+.expandable .scroll-card.is-open {
+  border-top-color: var(--action);
+}
+
+/* The detail panel — mirrors your .card / .closing styling */
+.expandable .tech-detail {
+  margin: 1.2rem 0 1.6rem;
+  padding: 1.6rem 1.8rem;
+  background: var(--text-inverse);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--action);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: techPanelIn .3s ease;
+}
+.expandable .tech-detail h3 {
+  margin-bottom: .6rem;
+}
+.expandable .back-link {
+  display: inline-block;
+  margin-top: .4rem;
+  font-size: .85rem;
+  color: var(--action-alt);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.expandable .back-link:hover { border-bottom-color: var(--action-alt); }
+
+@keyframes techPanelIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .expandable .tech-detail { animation: none; }
+}
 
 /* Mobile: stack bios */
 @media (max-width: 760px) {
@@ -548,7 +604,6 @@ footer a { color: var(--text-inverse); }
 }
 
 .page {
-  background: var(--background);
   padding: 3.4rem 2.5rem;
   border-bottom: 1px solid var(--section);
 }
@@ -573,18 +628,13 @@ footer a { color: var(--text-inverse); }
 
 .page-title {
   text-align: center;
-  background-color: var(--background);
   font-size: clamp(2.0rem, 3.0vw, 2.4rem);
   color: var(--text-strong);
 }
 
-.intro-offerings {
-  background: var(--background);
-  text-align: center;
-  padding: 3.4rem;
-}
 
-/* ===== Progressive disclosure blocks (B3 page) ===== */
+
+/* ===== Progressive disclosure blocks (BE page) ===== */
 .deep-dive {
   margin-top: 1.2rem;
   border: 1.5px dashed var(--section);
@@ -608,9 +658,7 @@ footer a { color: var(--text-inverse); }
   font-size: .95rem;
 }
    .rr {
-      max-width: 1000px;
       margin: 0 auto;
-      padding: 20;              /* the surrounding .page already pads; see note */
       font-size: 1.05rem;
       line-height: 1.65;
       color: var(--text);
@@ -622,24 +670,20 @@ footer a { color: var(--text-inverse); }
       color: var(--text-strong);
       font-size: 2rem;
       line-height: 1.2;
-      margin: 0 0 .6rem;
     }
     .rr h3 {
       font-family: var(--font-head);
       color: var(--text-strong);
       font-size: 1.25rem;
       line-height: 1.2;
-      margin: 2.2rem 0 .5rem;
     }
     .rr h4 {
       font-family: var(--font-head);
       color: var(--text-strong);
       font-size: 1.1rem;
       line-height: 1.2;
-      margin: 0 0 .3rem;
     }
 
-    .rr p { margin: 0 0 1rem; }
 
     .rr .rr-lead {
       font-size: 1.2rem;
@@ -696,9 +740,9 @@ footer a { color: var(--text-inverse); }
       color: var(--text-strong);
     }
 
-    /* ----- GATH3R variation of Rates & Exchange ----- */
-.rr--gath3r .rr-way { border-left-color: var(--action); }  /* gold accents instead of teal */
-.rr--gath3r .rr-forms li { border-color: var(--border); }  /* softer pill outline */
+    /* ----- GATHER variation of Rates & Exchange ----- */
+.rr--GATHER .rr-way { border-left-color: var(--action); }  /* gold accents instead of teal */
+.rr--GATHER .rr-forms li { border-color: var(--border); }  /* softer pill outline */
 
 /* ===== Scrolling rail ===== */
 .scroll-search {
@@ -758,6 +802,60 @@ footer a { color: var(--text-inverse); }
   display: none;
 }
 
-.lead {
+.BE-lead {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  padding: 4rem 10rem;
+  background-image: linear-gradient(rgba(233, 223, 210, .72), rgba(186, 117, 26, 0.72)),
+  url('images/BeRainbow.jpeg');
+  background-size: cover;
+  background-position:center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+.MOVE-lead {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 10rem;
+  background-image: linear-gradient(rgba(233, 223, 210, .72), rgba(186, 117, 26, 0.72)),
+  url('images/MoveRainbow.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+.GATHER-lead {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 10rem;
+  background-image: linear-gradient(rgba(233, 223, 210, .72), rgba(186, 117, 26, 0.72)),
+  url('images/Gather.jpeg');
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+
+h2.offerings-title {
+  color: var(--text-inverse);
 }
