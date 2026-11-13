@@ -16,6 +16,7 @@
   --section-warm:      #b47c0c;  /* rich amber bands */
   --section-strong:    #a54a0a;  /* rust bands (intro) */
   --section-deep:      #024743;  /* deep bands (wisdom) */
+  --section-light:     #fdfaf4;
 
   /* ---- Chrome ---- */
   --header-bg:         #e9dfd2;  /* sticky site header */

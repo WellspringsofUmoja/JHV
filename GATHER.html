@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GATHER — Journey Home Vitals</title>
+  <title>GATHER – Journey Home Vitals</title>
 
   <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="expandable.css">
 </head>
 
 <body>
@@ -15,312 +16,447 @@
   <div class="site">
 
     <!-- ===== 1. INTRO ===== -->
-    <section class="GATHER-lead" id="intro">
-      <div class="section-inner">
+    <section class="GATHER-lead page" id="intro">
+      <div class= "section-inner">
         <h1 class="page-title">GATHER</h1>
         <h2 class="offerings-title">For intergenerational village weavers ready to reclaim proactive interculture co-creation: gather around tales performed, techniques supported, and tools offered - so that shared w.i.s.dom becomes shared practice.</h2>
-</section>
-
-        <div class="pillar-grid">
-          <a class="card reveal" href="#tales">
-            <span class="placeholder-chip">Stories, performed</span>
-            <div class="card-text">
-              <h3>Tales</h3>
-              <p>Multi-modal music, story, and movement productions — from around a bonfire to a main stage.</p>
-            </div>
-          </a>
-          <a class="card reveal" href="#techniques">
-            <span class="placeholder-chip">Skills, supported</span>
-            <div class="card-text">
-              <h3>Techniques</h3>
-              <p>Guided group processes, online media, ebooks, and courses — inner technologies you carry home.</p>
-            </div>
-          </a>
-          <a class="card reveal" href="#tools">
-            <span class="placeholder-chip">Solutions, offered</span>
-            <div class="card-text">
-              <h3>Tools</h3>
-              <p>Infrastructure and resources that support wellness, resourcefulness, and community resilience.</p>
-            </div>
-          </a>
-        </div>
       </div>
     </section>
 
+    <div class="pillar-grid">
+      <a class="card reveal" href="#tales">
+        <span class="placeholder-chip">Stories, performed</span>
+        <div class="card-text">
+          <h3>Tales</h3>
+          <p>Multi-modal music, story, and movement productions – from around a bonfire to a main stage.</p>
+        </div>
+      </a>
+      <a class="card reveal" href="#techniques">
+        <span class="placeholder-chip">Skills, supported</span>
+        <div class="card-text">
+          <h3>Techniques</h3>
+          <p>Guided group processes, online media, ebooks, and courses – inner technologies you carry home.</p>
+        </div>
+      </a>
+      <a class="card reveal" href="#tools">
+        <span class="placeholder-chip">Solutions, offered</span>
+        <div class="card-text">
+          <h3>Tools</h3>
+          <p>Infrastructure and resources that support wellness, resourcefulness, and community resilience.</p>
+        </div>
+      </a>
+    </div>
+
     <!-- ===== 2. TALES ===== -->
-    <section class="page" id="tales">
+    <section class="page expandable sectiondeep" id="tales">
       <div class="section-inner">
         <p class="eyebrow">Stories, performed</p>
         <h2>Tales</h2>
 
-        <p class="lead">Our tales are presented in the ways of our ancestors — intended to be intergenerational, with insight and clarity deep enough that an elder could value them, and enjoyable enough that a child would love to listen, sing along, and play along with us.</p>
+        <p class="lead">Our tales are presented in the ways of our ancestors – intended to be intergenerational, with insight and clarity deep enough that an elder could value them, and enjoyable enough that a child would love to listen, sing along, and play along with us.</p>
         <br>
-          <div class="scroll-search">
-      <input type="search" id="scrollSearch" placeholder="Search tales… e.g. journey, music, values" aria-label="Search tales">
-    </div>
+
+        <div class="scroll-search">
+          <input type="search" class="rail-search" placeholder="Search tales… e.g. journey, music, values" aria-label="Search tales">
+        </div>
 
         <div class="scroll-rail-wrap">
-      <div class="scroll-rail" id="techRail">
-             <div class="card scroll-card" data-search="journey water hydrogen home">
-          <div class="card-text">
-           
-              <h3>The Journey of Home</h3>
-              <span class="placeholder-chip">30m - 1H</span>
-              <p>Through poetry, prose, and song of our oceanic origins, we remember our journey becoming on this planet, losing our connection, and joyfully reclaiming it.</p>
-            </div>
+          <div class="scroll-rail">
+
+            <a class="card scroll-card" href="#journey-of-home" data-search="journey water hydrogen home ocean origins poetry song">
+              <div class="card-text">
+                <h3>The Journey of Home</h3>
+                <span class="placeholder-chip">30m - 1H</span>
+                <p>Through poetry, prose, and song of our oceanic origins, we remember our journey becoming on this planet, losing our connection, and joyfully reclaiming it.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#divine-union" data-search="mother womb breath divine union connection">
+              <div class="card-text">
+                <h3>C'nnection to the Divine Union</h3>
+                <span class="placeholder-chip">20 min</span>
+                <p>Through breath, song, and story we affirm the connection that's always there.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#musical-performance" data-search="music covers originals ancestral traditions song">
+              <div class="card-text">
+                <h3>Musical Performance</h3>
+                <span class="placeholder-chip">15 min</span>
+                <p>Originals and covers amplifying deep wellness and connection to our inner w.i.s.dom, each other, and all.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#wise-values" data-search="w.i.s.e wise values wisdom wellness interconnection sovereignty stories">
+              <div class="card-text">
+                <h3>W.i.s.e Values Simply</h3>
+                <span class="placeholder-chip">20 min</span>
+                <p>Short stories that explain wellness, interconnection, and sovereignty in easy-to-understand and easy-to-remember ways.</p>
+              </div>
+            </a>
+
           </div>
-           <div class="card scroll-card" data-search="mother womb breath">
-          <div class="card-text">
-              <h3>C'nnection to the Divine Union</h3>
-              <span class="placeholder-chip">20 min</span>
-              <p>Through breath, song, and story we affirm the connection that's always there.</p>
-            </div>
-          </div>
-          <div class="card scroll-card" data-search="music voers ancestral traditions">
-          <div class="card-text">
-              <h3>Musical Performance</h3>
-              <span class="placeholder-chip">15 min</span>
-              <p>Originals and covers amplifying deep wellness and connection to our inner w.i.s.dom, each other, and all.</p>
-            </div>
-          </div>
-           <div class="card scroll-card" data-search="w.i.s.e values wisdom">
-          <div class="card-text">
-              <h3>W.i.s.e Values Simply</h3>
-               <span class="placeholder-chip">20 min</span>
-              <p>Short stories that explain wellness, interconnection, and sovereignty in easy-to-understand and easy-to-remember ways.</p>
-            </div>
-          </div>
-          
+          <p class="rail-hint">Scroll for more →</p>
+          <p class="rail-empty" hidden>No tales match that search.</p>
         </div>
-         <p class="rail-hint">Scroll for more →</p>
-      <p class="rail-empty" hidden>No techniques match that search.</p>
-        
+
+        <!-- Tales panels – fuller descriptions coming soon -->
+        <div class="detail-panel" id="journey-of-home" hidden>
+          <h3>The Journey of Home</h3>
+          <span class="placeholder-chip">30m - 1H</span>
+          <p>Through poetry, prose, and song of our oceanic origins, we remember our journey becoming on this planet, losing our connection, and joyfully reclaiming it.</p>
+          <p class="coming-soon">A fuller description of this tale is coming soon.</p>
+        </div>
+
+        <div class="detail-panel" id="divine-union" hidden>
+          <h3>C'nnection to the Divine Union</h3>
+          <span class="placeholder-chip">20 min</span>
+          <p>Through breath, song, and story we affirm the connection that's always there.</p>
+          <p class="coming-soon">A fuller description of this tale is coming soon.</p>
+        </div>
+
+        <div class="detail-panel" id="musical-performance" hidden>
+          <h3>Musical Performance</h3>
+          <span class="placeholder-chip">15 min</span>
+          <p>Originals and covers amplifying deep wellness and connection to our inner w.i.s.dom, each other, and all.</p>
+          <p class="coming-soon">A fuller description of this performance is coming soon.</p>
+        </div>
+
+        <div class="detail-panel" id="wise-values" hidden>
+          <h3>W.i.s.e Values Simply</h3>
+          <span class="placeholder-chip">20 min</span>
+          <p>Short stories that explain wellness, interconnection, and sovereignty in easy-to-understand and easy-to-remember ways.</p>
+          <p class="coming-soon">A fuller description of these stories is coming soon.</p>
+        </div>
+
       </div>
-      
     </section>
 
-  <section class="page expandable" id="techniques">
-  <div class="section-inner">
-    <p class="eyebrow">Techniques, supported</p>
-    <h2>Techniques</h2>
+    <!-- ===== 3. TECHNIQUES ===== -->
+    <section class="page expandable sectionwarm" id="techniques">
+      <div class="section-inner">
+        <p class="eyebrow">Techniques, supported</p>
+        <h2>Techniques</h2>
 
-    <p class="lead">We guide a group of people through a process that leaves them confident they can apply the inner technology they've learned — grounded in their own skill set and their own clarity. Catered to any age range, from simple introductions to deep-dives for those who know the foundations.</p>
-    <br>
+        <p class="lead">We guide a group of people through a process that leaves them confident they can apply the inner technology they've learned – grounded in their own skill set and their own clarity. Catered to any age range, from simple introductions to deep-dives for those who know the foundations.</p>
+        <br>
 
-    <!-- Search bar (unchanged — your existing filter still works) -->
-    <div class="scroll-search">
-      <input type="search" id="scrollSearch" placeholder="Search techniques… e.g. teeth, camping, hair" aria-label="Search techniques">
-    </div>
+        <div class="scroll-search">
+          <input type="search" class="rail-search" placeholder="Search techniques… e.g. teeth, camping, hair" aria-label="Search techniques">
+        </div>
 
-    <!-- The horizontal rail — cards are now <a> anchors, alphabetized -->
-    <div class="scroll-rail-wrap">
-      <div class="scroll-rail" id="techRail">
+        <div class="scroll-rail-wrap">
+          <div class="scroll-rail">
 
-        <a class="card scroll-card tech-card" id="ancestral-nutrition" href="#ancestral-nutrition"
-           data-search="ancestral nutrition modern family picky eater microbiome">
-          <div class="card-text">
-            <h3>Ancestral Nutrition</h3>
-            <span class="placeholder-chip">For the modern family</span>
-            <p>From picky eater to nourished foundation — sneaking in nourishing foods and restructuring the microbiome from the inside out, with very little resistance.</p>
+            <a class="card scroll-card" href="#ancestral-nutrition"
+               data-search="ancestral nutrition modern family picky eater microbiome">
+              <div class="card-text">
+                <h3>Ancestral Nutrition</h3>
+                <span class="placeholder-chip">For the modern family</span>
+                <p>From picky eater to nourished foundation – sneaking in nourishing foods and restructuring the microbiome from the inside out, with very little resistance.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#ancestral-nutrition-101"
+               data-search="ancestral nutrition 101 basics weston price foundation principles">
+              <div class="card-text">
+                <h3>Ancestral Nutrition 101</h3>
+                <span class="placeholder-chip">The basics</span>
+                <p>The foundations from ten-plus years studying the Weston A. Price principles – how people who lived this way for generations nourished themselves, all over the world.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#camping-families"
+               data-search="camping beginner families first trip tent backyard forest">
+              <div class="card-text">
+                <h3>Camping for Beginner Families</h3>
+                <p>From backyard first-tent to forest nights – walking you every step of the way, so nature connection feels nourishing and easeful.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#capoeira-angola"
+               data-search="capoeira angola history music movement martial art dance">
+              <div class="card-text">
+                <h3>Capoeira Angola</h3>
+                <p>Introducing Capoeira Angola through its history, music, and movement.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#earth-skills"
+               data-search="earth skills natural incense harvesting bundling palmetto weaving wild herb foraging walks">
+              <div class="card-text">
+                <h3>Earth Skills</h3>
+                <p>Natural incense harvesting and bundling, palmetto weaving, and wild herb foraging walks.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#space-maintenance"
+               data-search="life skills space maintenance cleaning non-toxic">
+              <div class="card-text">
+                <h3>Space Maintenance</h3>
+                <p>Simple, inexpensive, non-toxic methods of cleaning and maintaining one's living space – ever increasingly sovereign.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#spiraling-hair"
+               data-search="life skills spiraling hair maintenance natural hair">
+              <div class="card-text">
+                <h3>Spiraling Hair Maintenance</h3>
+                <p>Two techniques fine-tuned over eight years – gentle, easeful, light. Without drama, tears, or pain; supporting freedom and play.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#teeth-wellness"
+               data-search="teeth wellness remineralize fluoride decay dentistry weston price">
+              <div class="card-text">
+                <h3>Teeth Wellness</h3>
+                <p>Transitioning from toxin-laden fluoride to re-mineralizing teeth in simple ways – what we've lived, learned, and continue to study.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#wise-communications"
+            data-search="w.i.s.e wise wisdom w.i.s.dom communications communication speaking listening conflict power with felt sense definitions wellness interconnection sovereignty stories game same word different worlds">
+            <div class="card-text">
+            <h3>W.i.s.e Communications</h3>
+            <span class="placeholder-chip">From who's right to what's whole</span>
+             <p>Our challenges aren't technical. Together we learn to speak from wholeness and inner guidance, so we can co-create the world we know is possible.</p>
+            </div>
+</a>
+
+
           </div>
-        </a>
+          <p class="rail-hint">Scroll for more →</p>
+          <p class="rail-empty" hidden>No techniques match that search.</p>
+        </div>
 
-        <a class="card scroll-card tech-card" id="ancestral-nutrition-101" href="#ancestral-nutrition-101"
-           data-search="ancestral nutrition 101 basics weston price foundation principles">
-          <div class="card-text">
-            <h3>Ancestral Nutrition 101</h3>
-            <span class="placeholder-chip">The basics</span>
-            <p>The foundations from ten-plus years studying the Weston A. Price principles — how people who lived this way for generations nourished themselves, all over the world.</p>
-          </div>
-        </a>
+        <!-- Techniques panels -->
+        <div class="detail-panel" id="ancestral-nutrition" hidden>
+          <h3>Ancestral Nutrition – for the modern family</h3>
+          <p>Here we share the techniques we've utilized as a family to nourish our children – from picky eater to much less picky – restructuring the microbiome from the inside out with very little resistance. No matter who we're feeding, we know how to not only sneak nourishing foods in, but to build a deeply nourishing foundation that lasts.</p>
+        </div>
 
-        <a class="card scroll-card tech-card" id="camping-families" href="#camping-families"
-           data-search="camping beginner families first trip tent backyard forest">
-          <div class="card-text">
-            <h3>Camping for Beginner Families</h3>
-            <p>From backyard first-tent to forest nights — walking you every step of the way, so nature connection feels nourishing and easeful.</p>
-          </div>
-        </a>
+        <div class="detail-panel" id="ancestral-nutrition-101" hidden>
+          <h3>Ancestral Nutrition 101 – the basics</h3>
+          <p>Here we share all that we've learned through studying with the Weston A. Price Foundation over the last ten to twenty years – understanding how our ancestors and the ones who lived on the Earth nourished themselves all over the world, and the basic principles they all share. This is one of the purest methods of science there is: studying people who have lived this way for generations, and witnessing what happens when one of them changes – not just one people, but many, all over the world.</p>
+        </div>
 
-        <a class="card scroll-card tech-card" id="capoeira-angola" href="#capoeira-angola"
-           data-search="capoeira angola history music movement">
-          <div class="card-text">
-            <h3>Capoeira Angola</h3>
-            <p>Introducing Capoeira Angola through its history, music, and movement.</p>
-          </div>
-        </a>
+        <div class="detail-panel" id="camping-families" hidden>
+          <h3>Camping for Beginner Families</h3>
+          <p>We have many friends that we have taken on their first camping trip – whether meeting them in the forest or simply joining them in their backyard with an extra tent and a smiling face. We love to help people have nourishing, easeful, even deep experiences connecting with their capacity to connect with nature, no matter where they are – from setting up your tent, to the systems you can utilize to be comfortable through the night, to how to nourish yourself rising from the experience, and all the many things in between.</p>
+        </div>
 
-        <a class="card scroll-card tech-card" id="earth-skills" href="#earth-skills"
-           data-search="earth skills natural incense harvesting bundling palmetto weaving wild herb foraging walks">
-          <div class="card-text">
-            <h3>Earth Skills</h3>
-            <p>Natural incense harvesting and bundling, palmetto weaving, and wild herb foraging walks.</p>
+        <div class="detail-panel" id="capoeira-angola" hidden>
+          <h3>Capoeira Angola</h3>
+          <p>An introduction to Capoeira Angola through its history, music, and movement – a living tradition carried for generations.</p>
+          <br>
+          <div class="container split split--narrow">
+            <img src="/images/CapoieraSunset.jpg" alt="Capoeira at Sunset">
+            <div class="stack">
+              <p>What other art form or practice do you know of that combines martial art, dance, music, poetry, healing, ritual, folklore, acrobatics, improvisation, strategy, bio-mimicry, intercultural connection, and spirituality; and is even inclusive to anyone regardless of age, ethnicity, religion, or identity?! This is the beauty of Capoeira Angola, the Afro-Brazilian freedom fighting art form that was and is still used to this day to liberate and empower the bodies, minds, spirits, and communities of its practitioners from oppression and struggle. You will often see its practitioners full of joy, smiles, and laughter, and among them, the art is called a "jogo" or game, where Capoeira is played.</p>
+            </div>
           </div>
-        </a>
+          <br>
+          <p>Lev has been a devoted practitioner of the art for over a decade primarily as a student of Mestre Cobra Mansa, as well as other teachers along the way most notably Ras Tre Subira, Mastre Skher Brown, and ContraMestre Stefan Bonitz. During that time, Lev has taught and worked with Baltimore City Youth, performed with the Dancing Warriors, a Capoeira Edu-tainment Group at Baltimore City Schools, and is raising his own children with Capoeira Angola as a way of life. Workshops are customized to the group, taking age and experience level into account and invite the participants in to a new world in which they can explore a new way of moving their bodies, connecting with friends, and a cultural richness that transcends language barriers and body types.</p>
+          <p>Book a Capoeira Angola Experience for a memorable one of a kind taste of this rich cultural art that will leave you feeling connected, empowered, and enlivened to yourselves, to each other, and to nature itself.</p>
+        </div>
 
-        <a class="card scroll-card tech-card" id="space-maintenance" href="#space-maintenance"
-           data-search="life skills space maintenance cleaning non-toxic">
-          <div class="card-text">
-            <h3>Space Maintenance</h3>
-            <p>Simple, inexpensive, non-toxic methods of cleaning and maintaining one's living space — ever increasingly sovereign.</p>
-          </div>
-        </a>
+        <div class="detail-panel" id="earth-skills" hidden>
+          <h3>Earth Skills</h3>
+          <p><strong>Natural incense harvesting and bundling:</strong> to walk around the forest and not only see what can be used for food or tools, but to see the potential of something to be burned – and to find plants you can turn into cordage to bundle your incense. From the moments where there's a smell we don't like, to the moments we want to bring in a smell we do – the smoke is a powerful tool, and knowing how to make fragrant wreaths from the Earth around you is a really powerful skill to have.</p>
+          <p><strong>Palmetto weaving:</strong> a skill you can find in many situations, not just with palmetto fronds but with any plant that grows a certain way – weaving baskets, hats, and mats.</p>
+          <p><strong>Wild herb foraging walks:</strong> we love to learn the land, the green allies that nourish us and give us what we need throughout the day – an experiential walk discovering what's in the environment we're sharing, even using some of these herbs in teas and meals in the moment.</p>
+        </div>
 
-        <a class="card scroll-card tech-card" id="spiraling-hair" href="#spiraling-hair"
-           data-search="life skills spiraling hair maintenance natural hair">
-          <div class="card-text">
-            <h3>Spiraling Hair Maintenance</h3>
-            <p>Two techniques fine-tuned over eight years — gentle, easeful, light. Without drama, tears, or pain; supporting freedom and play.</p>
-          </div>
-        </a>
+        <div class="detail-panel" id="space-maintenance" hidden>
+          <h3>Space Maintenance</h3>
+          <p>Simple methods of cleaning and maintaining one's living space that are inexpensive, non-toxic, and ever increasingly more sovereign.</p>
+          <p class="coming-soon">A fuller description is coming soon.</p>
+        </div>
 
-        <a class="card scroll-card tech-card" id="teeth-wellness" href="#teeth-wellness"
-           data-search="teeth wellness remineralize fluoride decay dentistry weston price">
-          <div class="card-text">
-            <h3>Teeth Wellness</h3>
-            <p>Transitioning from toxin-laden fluoride to re-mineralizing teeth in simple ways — what we've lived, learned, and continue to study.</p>
-          </div>
-        </a>
+        <div class="detail-panel" id="spiraling-hair" hidden>
+          <h3>Spiraling Hair Maintenance</h3>
+          <p>Here we offer two techniques that we have fine-tuned over the last eight years that support easy processing of spiraling hair in a way that is gentle, easeful, and light – that doesn't require drama, tears, or pain, but supports freedom and play. If this resonates with you, we would love to share it.</p>
+        </div>
+
+        <div class="detail-panel" id="teeth-wellness" hidden>
+          <h3>Teeth Wellness</h3>
+          <p>Through many hard lessons and some deeply celebrated successes, we have realized how to begin transitioning from toxic-laden fluoride and misunderstanding around nutrition to re-mineralizing our teeth in simple ways with tools we can have on hand. We're not acting like we know everything – but we have gone through the trenches and come out having re-mineralized, paused decay, and witnessed it not returning. We continue to study with the dentists and wise people carrying forward the work of Weston Price, and we can teach you what we have learned.</p>
+        </div>
+
+        <div class="detail-panel" id="wise-communications" hidden>
+          <h3>W.i.s.e Communications</h3>
+          <span class="placeholder-chip">From who's right to what's whole</span>
+        
+          <p>As a species, our deepest problems are not technical. We already have the solutions for all of us to live in w.i.s.dom, wellness, interconnection, and sovereignty, in symbiotic abundance with the Earth. In that world, everyone has access to what they need and truly want, free of debt and free of coercion. What holds us back is how hard it can be to work together toward the more beautiful world we know is possible. This offering is about that missing piece: how we speak, listen, and create together.</p>
+        <br>
+          <h4>How we got here</h4>
+          <p>We look at a bit of our journey as a species, as far as we can tell. We trace how we came to spend so much energy arguing over who is right and who is wrong, who knows what is good and who knows what is bad.</p>
+        <br>
+          <h4>The next step</h4>
+          <p>We step out of arguing over abstractions and into speaking from wholeness and inner guidance, oriented by a felt sense in the body. We soften our definitions, honoring that each of us has the sovereign capacity to define things differently. Discovering how each person defines things becomes a way of honoring their w.i.s.dom.</p>
+        <br>
+          <h4>In practice</h4>
+          <p>We reflect on power-over dynamics and the roles of victim, villain, and vindicator. Then we explore power-with dynamics, which honor the w.i.s.e, creative source spark within each of us and let it move through us, as us. From there we practice new ways of talking with each other, from a place of w.i.s.dom.</p>
+        <br>
+          <h4>Stories of the w.i.s.e values</h4>
+          <p>Depending on the length of the session, we share short stories that bring these ideas to life and make them easier to integrate.</p>
+          <p><strong>Wellness:</strong> a story of recognizing that wellness is a choice we can make in any moment.</p>
+          <p><strong>Interconnection:</strong> a story that anchors the ways everything is connected, even when we would rather not acknowledge it.</p>
+          <p><strong>Sovereignty:</strong> a story of how the choice to anchor into our wellness is always ours, no matter what the outside world presents.</p>
+        <br>
+          <h4>Same Word, Different Worlds</h4>
+          <p>A game to play together. Everyone moves freely around the space. A caller names a word like home, safe, strong, or enough, and everyone freezes in the shape that word feels like in their body. We look around at how many different shapes one word holds, and a few people share what their shape means to them. No one's shape is wrong. Playful for children, revealing for adults, and a felt experience of honoring each person's w.i.s.dom.</p>
+        <br>
+          <p>Catered to any age range, from a simple introduction to a deep-dive for those who know the foundations.</p>
+        </div>
+
+        
 
       </div>
-      <p class="rail-hint">Scroll for more →</p>
-      <p class="rail-empty" hidden>No techniques match that search.</p>
-    </div>
+    </section>
 
-    <!-- ===== Detail panels — OUTSIDE the rail, in normal flow =====
-         Order matches the cards above. Each panel's data-for must
-         equal its card's id. -->
-    <div class="tech-detail" data-for="ancestral-nutrition" hidden>
-      <h3>Ancestral Nutrition — for the modern family</h3>
-      <p>Here we share the techniques we've utilized as a family to nourish our children — from picky eater to much less picky — restructuring the microbiome from the inside out with very little resistance. No matter who we're feeding, we know how to not only sneak nourishing foods in, but to build a deeply nourishing foundation that lasts.</p>
-      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
-    </div>
-
-    <div class="tech-detail" data-for="ancestral-nutrition-101" hidden>
-      <h3>Ancestral Nutrition 101 — the basics</h3>
-      <p>Here we share all that we've learned through studying with the Weston A. Price Foundation over the last ten to twenty years — understanding how our ancestors and the ones who lived on the Earth nourished themselves all over the world, and the basic principles they all share. This is one of the purest methods of science there is: studying people who have lived this way for generations, and witnessing what happens when one of them changes — not just one people, but many, all over the world.</p>
-      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
-    </div>
-
-    <div class="tech-detail" data-for="camping-families" hidden>
-      <h3>Camping for Beginner Families</h3>
-      <p>We have many friends that we have taken on their first camping trip — whether meeting them in the forest or simply joining them in their backyard with an extra tent and a smiling face. We love to help people have nourishing, easeful, even deep experiences connecting with their capacity to connect with nature, no matter where they are — from setting up your tent, to the systems you can utilize to be comfortable through the night, to how to nourish yourself rising from the experience, and all the many things in between.</p>
-      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
-    </div>
-
-    <div class="tech-detail" data-for="capoeira-angola" hidden>
-      <h3>Capoeira Angola</h3>
-      <p>An introduction to Capoeira Angola through its history, music, and movement — a living tradition carried for generations.</p>
-      <p>What other art form or practice do you know of that combines martial art, dance, music, poetry, healing, ritual, folklore, acrobatics, improvisation, strategy, bio-mimicry, intercultural connection, and spirituality; and is even inclusive to anyone regardless of age, ethnicity, religion, or identity. This is the beauty of Capoeira Angola, the Afro-Brazilian freedom fighting art form that was and is still used to this day to liberate and empower the bodies, minds, spirits, and communities of its practitioners from oppression and struggle. You will often see it's practitioners full of joy, smiles, and laughter, and among them, the art is called a "jogo" or game, where Capoeira is played. 
-      <br>
-      Lev has been a devoted practitioner of the art for over a decade primarily as a student of Mestre Cobra Mansa, as well as other teachers along the way most notably Ras Tre Subira, Mastre Skher Brown, and ContraMestre Stefan Bonitz. During that time, Lev has taught and worked with Baltimore City Youth, performed with the Dancing Warriors, a Capoeira Edu-tainment Group at Baltimore City Schools, and is raising his own children with Capoeira Angola as a way of life. Workshops are customized to the group, taking age and experience level into account and invite the participants in to a new world in which they can explore a new way of moving their bodies, connecting with friends, and a cultural richness that transcends language barriers and body types.
-      <br>
-      Book a Capoeira Angola Experience for a memorable one of a kind taste of this rich cultural art that will leave you feeling connected, empowered, and enlivened to yourselves, to each other, and to nature itself.</p>
-      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
-    </div>
-
-    <div class="tech-detail" data-for="earth-skills" hidden>
-      <h3>Earth Skills</h3>
-      <p><strong>Natural incense harvesting and bundling:</strong> to walk around the forest and not only see what can be used for food or tools, but to see the potential of something to be burned — and to find plants you can turn into cordage to bundle your incense. From the moments where there's a smell we don't like, to the moments we want to bring in a smell we do — the smoke is a powerful tool, and knowing how to make fragrant wreaths from the Earth around you is a really powerful skill to have.</p>
-      <p><strong>Palmetto weaving:</strong> a skill you can find in many situations, not just with palmetto fronds but with any plant that grows a certain way — weaving baskets, hats, and mats.</p>
-      <p><strong>Wild herb foraging walks:</strong> we love to learn the land, the green allies that nourish us and give us what we need throughout the day — an experiential walk discovering what's in the environment we're sharing, even using some of these herbs in teas and meals in the moment.</p>
-      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
-    </div>
-
-    <div class="tech-detail" data-for="space-maintenance" hidden>
-      <h3>Space Maintenance</h3>
-      <p>Simple methods of cleaning and maintaining one's living space that are inexpensive, non-toxic, and ever increasingly more sovereign.</p>
-      <p>[Expand this section with your fuller description.]</p>
-      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
-    </div>
-
-    <div class="tech-detail" data-for="spiraling-hair" hidden>
-      <h3>Spiraling Hair Maintenance</h3>
-      <p>Here we offer two techniques that we have fine-tuned over the last eight years that support easy processing of spiraling hair in a way that is gentle, easeful, and light — that doesn't require drama, tears, or pain, but supports freedom and play. If this resonates with you, we would love to share it.</p>
-      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
-    </div>
-
-    <div class="tech-detail" data-for="teeth-wellness" hidden>
-      <h3>Teeth Wellness</h3>
-      <p>Through many hard lessons and some deeply celebrated successes, we have realized how to begin transitioning from toxic-laden fluoride and misunderstanding around nutrition to re-mineralizing our teeth in simple ways with tools we can have on hand. We're not acting like we know everything — but we have gone through the trenches and come out having re-mineralized, paused decay, and witnessed it not returning. We continue to study with the dentists and wise people carrying forward the work of Weston Price, and we can teach you what we have learned.</p>
-      <a class="back-link" href="#techniques">&larr; Back to Techniques</a>
-    </div>
-
-  </div>
-</section>
     <!-- ===== 4. TOOLS ===== -->
-    <section class="page" id="tools">
+    <section class="page expandable sectionstrong" id="tools">
       <div class="section-inner">
         <p class="eyebrow">Solutions, offered</p>
         <h2>Tools</h2>
 
-        <p class="lead">Every tool that we have here, we either have access to or have experienced — and can tell that it could be significantly beneficial for an individual or a community effort toward the w.i.s.e values we intend to support in the world.</p>
+        <p class="lead">Every tool that we have here, we either have access to or have experienced – and can tell that it could be significantly beneficial for an individual or a community effort toward the w.i.s.e values we intend to support in the world.</p>
+        <br>
 
-        <details class="deep-dive">
-          <summary>Wellspring Infrastructure</summary>
+        <div class="scroll-search">
+          <input type="search" class="rail-search" placeholder="Search tools… e.g. water, food" aria-label="Search tools">
+        </div>
+
+        <div class="scroll-rail-wrap">
+          <div class="scroll-rail">
+
+            <a class="card scroll-card" href="#wellspring-infrastructure"
+               data-search="wellspring infrastructure water wellness cleaning gathering">
+              <div class="card-text">
+                <h3>Wellspring Infrastructure</h3>
+                <span class="placeholder-chip">Water, evolved</span>
+                <p>Supporting the wellness of our body inside and out – and cleaning our spaces.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#freeze-dryer"
+               data-search="freeze dryer food preservation security abundance nutrition storage">
+              <div class="card-text">
+                <h3>Freeze Dryer</h3>
+                <span class="placeholder-chip">Food security</span>
+                <p>Making abundance last – with the most nutritional value kept intact.</p>
+              </div>
+            </a>
+
+            <a class="card scroll-card" href="#analema-water-wand"
+               data-search="analema water wand structured water energy science">
+              <div class="card-text">
+                <h3>Analema Water Wand</h3>
+                <span class="placeholder-chip">Water, energized</span>
+                <p>A simple, accessible wand that helps reclaim the deepest qualities of water.</p>
+              </div>
+            </a>
+            <a class="card scroll-card" href="#earthborn-reborn"
+              data-search="earthborn reborn clothing earth linen linens fabric fabrics natural fibers secondhand thrift vintage boutique vending reclaimed recycled colors wardrobe">
+              <div class="card-text">
+                <h3>Earthborn &amp; Reborn</h3>
+                <span class="placeholder-chip">Natural fibers, reclaimed</span>
+                <p>Natural linens, fabrics, and hand-selected secondhand treasures, reclaimed and offered at great prices.</p>
+              </div>
+            </a>
+
+          </div>
+          <p class="rail-hint">Scroll for more →</p>
+          <p class="rail-empty" hidden>No tools match that search.</p>
+        </div>
+
+        <!-- Tools panels -->
+        <div class="detail-panel" id="wellspring-infrastructure" hidden>
+          <h3>Wellspring Infrastructure</h3>
           <p>An infrastructure we utilize to support the wellness of our body, both internally and externally, and also to clean our spaces.</p>
-          <p>We believe it is the evolution of a relationship with water. Just as we have gathered around water since the beginning of our journey on this planet, we believe this tool could be pivotal in reclaiming those gathering spaces — and supporting each other to recognize the ways we can impact each other's lives to save money, become more resourceful, and ultimately heal this planet.</p>
-        </details>
+          <p>We believe it is the evolution of a relationship with water. Just as we have gathered around water since the beginning of our journey on this planet, we believe this tool could be pivotal in reclaiming those gathering spaces – and supporting each other to recognize the ways we can impact each other's lives to save money, become more resourceful, and ultimately heal this planet.</p>
+        </div>
 
-        <details class="deep-dive">
-          <summary>Freeze Dryer</summary>
-          <p>A piece of infrastructure that has been really helpful for feeling a deep sense of security in times when we really don't know what could happen in the future in relationship to the food we have. Whenever we experience abundance, we do everything we can to make that abundance last — and this is a tool that can make it last the longest and maintain the most nutritional value. We recommend it, have utilized it immensely, and intend to continue to do so.</p>
-        </details>
+        <div class="detail-panel" id="freeze-dryer" hidden>
+          <h3>Freeze Dryer</h3>
+          <p>A piece of infrastructure that has been really helpful for feeling a deep sense of security in times when we really don't know what could happen in the future in relationship to the food we have. Whenever we experience abundance, we do everything we can to make that abundance last – and this is a tool that can make it last the longest and maintain the most nutritional value. We recommend it, have utilized it immensely, and intend to continue to do so.</p>
+        </div>
 
-        <details class="deep-dive">
-          <summary>Analema Water Wand</summary>
-          <p>A tool at the leading edge of the evolving science of studying water. Very simple, and much more accessible than our wellspring infrastructure — and at the same time a very profound technology that can help us reclaim some of the deepest qualities of water in our life, by something so simple as a wand placed in the water.</p>
-          <p>When we began to understand the ways that water is impacted by our thoughts and actions — and by the chemicals and aggression toward this planet — we realized how important it is to reclaim the wisdom and intelligence that is always accessible in water. This wand brings the strongest energy possible into the water through their wonderful year-long technique of seeding the water with the beneficial energies of the Earth. In this way we can reclaim our waters not only structurally, but energetically as well.</p>
-        </details>
+        <div class="detail-panel" id="analema-water-wand" hidden>
+          <h3>Analema Water Wand</h3>
+          <p>A tool at the leading edge of the evolving science of studying water. Very simple, and much more accessible than our wellspring infrastructure – and at the same time a very profound technology that can help us reclaim some of the deepest qualities of water in our life, by something so simple as a wand placed in the water.</p>
+          <p>When we began to understand the ways that water is impacted by our thoughts and actions – and by the chemicals and aggression toward this planet – we realized how important it is to reclaim the wisdom and intelligence that is always accessible in water. This wand brings the strongest energy possible into the water through their wonderful year-long technique of seeding the water with the beneficial energies of the Earth. In this way we can reclaim our waters not only structurally, but energetically as well.</p>
+        </div>
 
         <div class="closing">
-          Every tool we offer ultimately supports the larger work: gathering your community around you, and supporting yourselves to feel home on this planet — in a way that ultimately impacts and is impacted by all.
+          Every tool we offer ultimately supports the larger work: gathering your community around you, and supporting yourselves to feel home on this planet – in a way that ultimately impacts and is impacted by all.
         </div>
+        <!-- ===== 2. PANEL ===== -->
+<div class="detail-panel" id="earthborn-reborn" hidden>
+  <h3>Earthborn &amp; Reborn</h3>
+  <span class="placeholder-chip">Natural fibers, reclaimed</span>
+ 
+  <p>At gatherings and events, we bring a pop-up boutique of natural linens, fabrics, and hand-selected styles clothing. Every piece is chosen with care for the quality of its material, the beauty of its colors, and how it feels to move in.</p>
+  <br>
+  <h4>Rooted in the w.i.s.e values</h4>
+  <p><strong>Wellness:</strong> natural fibers that support our bodies and our freedom to move.</p>
+  <p><strong>Interconnection:</strong> materials that keep us connected to the Earth they came from.</p>
+  <p><strong>Sovereignty:</strong> we are reclaiming the clothing of the Earth. Instead of letting it go to the junkyard, we go out of our way to the places where these things are being recycled, find the gems, and bring them back into circulation.</p>
+  <br>
+  <h4>Great prices, on purpose</h4>
+  <p>Because we go out of our way to find these pieces at the best prices, we can offer them to you at great prices too.</p>
+ 
+  <p>Would you like our boutique at your event? <a href="connect.html">Reach out</a> and let's talk about bringing it to your gathering.</p>
+</div>
+
       </div>
     </section>
 
-    <section class="rr rr--GATHER page">
-  <h2>Rates &amp; Exchange</h2>
-  <p class="rr-lead">GATHER works on the same principle as everything we do: reciprocity, spoken out loud. We can talk about cost directly and early.</p>
-
-  <h3>The shape of the work</h3>
-  <p>This work is project-based. Each gathering is priced as itself — the workshop, the performance, the full arc of what we&rsquo;re making together — not by the hour. Time is a tool here, not the measure.</p>
-
-  <h3>Flexible forms of exchange</h3>
-  <p>We're open to a range of ways to be paid:</p>
-  <ul class="rr-forms">
-    <li>Bartering</li>
-    <li>Fiat</li>
-    <li>Crypto</li>
-    <li>Gold &amp; silver</li>
-  </ul>
-  <p>Sometimes entrance into the event is payment enough. A full room of the right people is its own kind of wealth — we can talk about what you bring versus what you pay.</p>
-
-  <h3>Ways we can gather</h3>
-  <div class="rr-ways">
-    <div class="rr-way">
-      <h4>Workshops</h4>
-      <p>Priced per gathering and group size, scaled to who&rsquo;s in the room and what we&rsquo;re building.</p>
-    </div>
-    <div class="rr-way">
-      <h4>Performances</h4>
-      <p>A single rate for the piece itself, agreed before the doors open, so the art is never haggled over.</p>
-    </div>
-    <div class="rr-way">
-      <h4>Co-created events</h4>
-      <p>Longer collaborations priced as a whole arc — workshop series, residencies, gatherings with a life of their own.</p>
-    </div>
-  </div>
-
-  <p class="rr-close">Rates vary by workshop, and that&rsquo;s on purpose — each gathering asks something different. Bring what you have; let&rsquo;s find the exchange that lets everyone arrive feeling well.</p>
-</section>
-
-    <!-- ===== 5. CONNECT ===== -->
-    <section class="subscribe" id="connect">
+  <!-- ===== 5. RATES & EXCHANGE ===== -->
+    <section class="rr rr--GATHER page sectionlight">
       <div class="section-inner">
-        <p class="eyebrow">Connect</p>
+      <h2>Rates &amp; Exchange</h2>
+      <p class="rr-lead">All of our offerings works on the same principle as everything we do: reciprocity, spoken out loud. We can talk about cost directly and early.</p>
+      <br>
+      <h3>The shape of the work</h3>
+      <p>This work is project-based. Each gathering is priced as itself – the workshop, the performance, the full arc of what we&rsquo;re making together – not by the hour. Time is a tool here, not the measure.</p>
+     <br>
+      <h3>Flexible forms of exchange</h3>
+      <p>We're open to a range of ways to be paid:</p>
+      <ul class="rr-forms">
+        <li>Bartering</li>
+        <li>Fiat</li>
+        <li>Crypto</li>
+        <li>Gold &amp; silver</li>
+      </ul>
+      <p>Sometimes entrance into the event is payment enough. A full room of the right people is its own kind of wealth – we can talk about what you bring versus what you pay.</p>
+     <br>
+      <h3>Ways we can gather</h3>
+      <div class="rr-ways">
+        <div class="rr-way">
+          <h4>Workshops</h4>
+          <p>Priced per gathering and group size, scaled to who&rsquo;s in the room and what we&rsquo;re building.</p>
+        </div>
+        <div class="rr-way">
+          <h4>Performances</h4>
+          <p>A single rate for the piece itself, agreed before the doors open, so the art is never haggled over.</p>
+        </div>
+        <div class="rr-way">
+          <h4>Co-created events</h4>
+          <p>Longer collaborations priced as a whole arc – workshop series, residencies, gatherings with a life of their own.</p>
+        </div>
+      </div>
+
+      <p class="rr-close">Rates vary by workshop, and that&rsquo;s on purpose – each gathering asks something different. Bring what you have; let&rsquo;s find the exchange that lets everyone arrive feeling well.</p>
+   </div>
+    </section>
+
+    <!-- ===== 6. CONNECT ===== -->
+    <section class="subscribe page" id="connect">
+      <div class="section-inner">
         <h2>Explore the offers more</h2>
-        <p>Whether it's a tale around your fire, a technique for your family, or a tool for your community — the journey begins with a conversation.</p>
+        <p>Whether it's a tale around your fire, a technique for your family, or a tool for your community – the journey begins with a conversation.</p>
         <br>
         <div class="cta-row">
           <a class="btn-primary" href="index.html#connect">Reach out to us</a>
@@ -334,34 +470,6 @@
   <div id="footer-mount"></div>
 
   <script src="main.js"></script>
-  <script>
-  const scrollSearch = document.getElementById('scrollSearch');
-  const cards = document.querySelectorAll('.scroll-card');
-  const railEmpty = document.querySelector('.rail-empty');
-
-  scrollSearch.addEventListener('input', () => {
-    const query = scrollSearch.value.trim().toLowerCase();
-    let visibleCount = 0;
-
-    cards.forEach(card => {
-      const haystack = (card.dataset.search + ' ' + card.textContent).toLowerCase();
-      const matches = query === '' || haystack.includes(query);
-      card.hidden = !matches;         // hide non-matching cards
-      if (matches) visibleCount++;
-    });
-
-    railEmpty.hidden = visibleCount > 0;
-  });
-
-  scrollSearch.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();            // keep focus in the search box
-      const firstVisible = [...cards].find(card => !card.hidden);
-      if (firstVisible) {
-        firstVisible.scrollIntoView({ behavior: 'smooth', inline: 'center' });
-      }
-    }
-  });
-</script>
+  <script src="expandable.js"></script>
 </body>
 </html>

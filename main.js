@@ -119,5 +119,17 @@ async function init() {
   // GATH3R.html#teeth-wellness arrive open.
   syncFromHash();
 })();
+document.querySelectorAll('.detail-close').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const panel = btn.closest('.tech-detail');
+    const card = document.getElementById(panel.dataset.for);
+    panel.hidden = true;
+    if (card) {
+      card.classList.remove('is-open');
+      card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    }
+    history.replaceState(null, '', '#techniques');
+  });
+});
 
 init();

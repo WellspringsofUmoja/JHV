@@ -1,0 +1,143 @@
+/* =========================================================
+   expandable.css — reusable "expandable card rail" component
+   Journey Home Vitals — load AFTER style.css on any page that
+   has a <section class="expandable">. Pairs with expandable.js.
+   ========================================================= */
+
+/* Hidden means hidden — guards against display rules overriding it */
+[hidden] { display: none !important; }
+
+/* ===== Search ===== */
+.expandable .scroll-search {
+  margin-bottom: 1.5rem;
+}
+.expandable .rail-search {
+  width: 100%;
+  max-width: 420px;
+  padding: .8rem 1.1rem;
+  border-radius: 9px;
+   border: 1.5px solid var(--background); 
+  font-size: 1rem;
+  font-family: var(--font-body);
+  background: var(--background);  
+  color: var(--text);   
+}
+
+/* ===== Scrolling rail ===== */
+.expandable .scroll-rail {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: .5rem .25rem 1.5rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  justify-content: safe center; 
+}
+.expandable .scroll-rail::-webkit-scrollbar { height: 8px; }
+.expandable .scroll-rail::-webkit-scrollbar-thumb {
+  background: var(--section);
+  border-radius: 999px;
+}
+
+.expandable .scroll-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  scroll-margin-top: 6rem;
+  text-decoration: none;
+  color: var(--text); 
+  cursor: pointer;
+  transition: transform .25s ease;
+}
+.expandable .scroll-card:hover { transform: translateY(-6px); }
+
+/* The card whose panel is open */
+.expandable .scroll-card.is-open {
+  border-top-color: var(--action);
+  transform: translateY(-6px);
+}
+
+.expandable .rail-hint {
+  font-size: .78rem;
+  color: var(--text-inverse);
+  margin: 0;
+}
+.expandable .rail-empty {
+  font-size: .95rem;
+  color: var(--text-soft);
+  font-style: italic;
+}
+
+/* ===== Detail panel (the "jump out") ===== */
+.expandable .detail-panel {
+  margin: 1.2rem 0 1.6rem;
+  padding: 1.6rem 1.8rem;
+  background: var(--text-inverse);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--action);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: detailPanelIn .3s ease;
+  color: var(--text);  
+}
+.expandable .detail-panel:focus { outline: none; }
+
+.expandable .detail-panel h3 {
+  margin-bottom: .6rem;
+  padding-right: 3rem;          /* keeps the title clear of the X */
+}
+.expandable .detail-panel p + p { margin-top: .8rem; }
+
+/* Floating X — sticks below the header while you scroll the panel,
+   and stops at the panel's bottom edge */
+.expandable .detail-close {
+  position: sticky;
+  top: 6.5rem;                  /* adjust if it tucks under your header */
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-left: auto;
+  margin-bottom: -2.4rem;       /* lets the title sit beside it */
+  border: none;
+  border-radius: 50%;
+  background: var(--section-strong);
+  color: var(--text-inverse);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background .2s;
+}
+.expandable .detail-close:hover { background: var(--action-hover); }
+
+.expandable .back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: .85rem;
+  color: var(--action-alt);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.expandable .back-link:hover { border-bottom-color: var(--action-alt); }
+
+/* "Coming soon" note inside a panel */
+.expandable .coming-soon {
+  font-style: italic;
+  color: var(--text-soft);
+}
+
+@keyframes detailPanelIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .expandable .detail-panel { animation: none; }
+  .expandable .scroll-card { transition: none; }
+}
+
+/* ===== Phones ===== */
+@media (max-width: 480px) {
+  .expandable .scroll-card { flex-basis: 82%; }
+  .expandable .detail-panel { padding: 1.3rem 1.2rem; }
+}
