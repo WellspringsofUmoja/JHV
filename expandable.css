@@ -71,7 +71,7 @@
 .expandable .detail-panel {
   margin: 1.2rem 0 1.6rem;
   padding: 1.6rem 1.8rem;
-  background: var(--text-inverse);
+  background: var(--background);
   border: 1.5px solid var(--border);
   border-left: 4px solid var(--action);
   border-radius: var(--radius);
@@ -101,8 +101,8 @@
   margin-bottom: -2.4rem;       /* lets the title sit beside it */
   border: none;
   border-radius: 50%;
-  background: var(--section-strong);
-  color: var(--text-inverse);
+  background: color-mix(in srgb, var(--section) 10%, transparent);;
+  color: var(--text-strong);
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;

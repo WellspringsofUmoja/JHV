@@ -78,16 +78,9 @@ h1, h2, h3 {
   margin-top: 1rem;
   font-size: 1.15rem;
 }
-.hero .cta-row {
-  margin-top: 2.2rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 
 
-/* ===== Responsive breakpoints ===== */
+/* ===== Responsive breakpoints (hero) ===== */
 @media (max-width: 1024px) {
   .hero > div {
     margin-left: 1%;
@@ -101,11 +94,19 @@ h1, h2, h3 {
     margin-left: 0;
     margin-right: 0;
     padding: 2rem;
+    background-attachment: scroll;   /* phones don't handle "fixed" well */
   }
 }
 
 
 /* ===== Buttons ===== */
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
+  display: inline-block;   /* lets the padding count, so wrapped buttons don't overlap */
+  text-align: center;
+}
+
 .btn-primary {
   background: var(--action);
   color: var(--text-inverse);
@@ -139,6 +140,23 @@ h1, h2, h3 {
 }
 .btn-ghost:hover { background: var(--action-hover); color: var(--text-inverse); }
 
+/* Button row — works anywhere, not just inside .hero */
+.cta-row {
+  margin-top: 2.2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Small phones: stack buttons full-width for easy tapping */
+@media (max-width: 480px) {
+  .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 /* ===== Contact Form ===== */
 .contact-form {
   display: flex;
@@ -168,8 +186,10 @@ h1, h2, h3 {
 /* ===== Section shell ===== */
 section { padding: 1.5rem 1.5rem; }
 
-.section-inner {  margin: 0 auto;
-  padding: 2.5rem 1.5rem; }
+.section-inner {
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
 
 .sectionlight      { background-color: var(--section-light); }
 .sectionlighttrans { background-color: color-mix(in srgb, var(--section) 75%, transparent); }
@@ -177,7 +197,7 @@ section { padding: 1.5rem 1.5rem; }
 .sectionwarm       { background-color: var(--section-warm); }
 .sectiondeep       { background-color: var(--section-deep); color: var(--text-inverse); }
 .sectionstrong     { background-color: var(--section-strong); color: var(--text-inverse); }
-.sectionstrong h2 {color: var(--text-inverse);}
+.sectionstrong h2  { color: var(--text-inverse); }
 .sectionstrong .rail-hint,
 .sectionstrong .rail-empty {
   color: var(--text-inverse);
@@ -260,18 +280,14 @@ section { padding: 1.5rem 1.5rem; }
   max-width: 100%;
   height: auto;
   border-radius: 14px;
+  display: block;
+  margin-inline: auto;
 }
 @media (max-width: 760px) {
   .intro h1 {
     font-size: 2.4rem;
+    padding-top: 2.4rem;
   }
-}
-
-#intrologopic {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin-inline: auto;
 }
 
 /* ===== Three pillars: BE / MOVE / GATHER ===== */
@@ -279,7 +295,6 @@ section { padding: 1.5rem 1.5rem; }
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -318,7 +333,7 @@ a.card:hover { transform: translateY(-6px); }
 
 a.card {
   text-decoration: none;
-  color: var(--text); 
+  color: var(--text);
   display: block;
 }
 
@@ -334,6 +349,7 @@ a.card {
   border-radius: 999px;
   padding: .2rem .8rem;
   margin-bottom: .8rem;
+  text-align: center;
 }
 
 .card-text {
@@ -554,7 +570,7 @@ footer a { color: var(--text-inverse); }
 }
 
 .page {
-margin-block: 4rem;
+  margin-block: 4rem;
 }
 
 [id] {
@@ -597,7 +613,7 @@ margin-block: 4rem;
   color: var(--section-strong);
 }
 
-.deep-dive[open] smmary {
+.deep-dive[open] summary {
   border-bottom: 1.5px dashed var(--section);
 }
 
@@ -614,9 +630,6 @@ margin-block: 4rem;
   color: var(--text);
 }
 
-/* Keep the content in the same 1000px column as every
-   other section (matches .section-inner), while the section's
-   background and bottom border still run full width */
 .rr > * {
   margin-left: auto;
   margin-right: auto;
@@ -634,14 +647,14 @@ margin-block: 4rem;
   color: var(--text-strong);
   font-size: 1.25rem;
   line-height: 1.2;
-   margin-bottom: .4rem;  
+  margin-bottom: .4rem;
 }
 .rr h4 {
   font-family: var(--font-head);
   color: var(--text-strong);
   font-size: 1.1rem;
   line-height: 1.2;
-  margin-bottom: .4rem;  
+  margin-bottom: .4rem;
 }
 
 .rr .rr-lead {
@@ -790,14 +803,7 @@ h2.offerings-title {
 .split--narrow { grid-template-columns: 1fr 4fr; }
 .split--narrow.split--reverse { grid-template-columns: 3fr 2fr; }
 
-/* Stack on phones: image above text */
-@media (max-width: 760px) {
-  .split,
-  .split--narrow,
-  .split--narrow.split--reverse { grid-template-columns: 1fr; }
-  .split--reverse > :first-child { order: 0; }
-}
-
+/* ===== Links ===== */
 a {
   color: var(--text-strong);
   text-decoration: none;
@@ -813,4 +819,82 @@ a::after {
 }
 a:hover {
   color: var(--text-warm);
+}
+
+
+/* =========================================================
+   SMALLER SCREENS — kept at the very end so these rules
+   always win over the desktop rules above them
+   ========================================================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .BE-lead, .MOVE-lead, .GATHER-lead {
+    padding: 4rem 3rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 760px) {
+  .BE-lead, .MOVE-lead, .GATHER-lead {
+    padding: 3rem 1.5rem;
+    min-height: 60vh;
+    background-attachment: scroll;   /* phones don't handle "fixed" well */
+  }
+
+  body {
+    background-attachment: scroll;   /* same fix for the page background */
+  }
+
+  .page {
+    margin-block: 0rem;
+  }
+
+  /* Stack image-beside-text on phones */
+  .split,
+  .split--narrow,
+  .split--narrow.split--reverse { grid-template-columns: 1fr; }
+  .split--reverse > :first-child { order: 0; }
+    /* Tighter spacing on phones */
+  section {
+    padding: 0;
+  }
+  .section-inner {
+    padding: 2rem 1rem;
+  }
+  .hero {
+    padding: 2.5rem 1rem;
+  }
+  .card {
+    padding: 1.3rem;
+  }
+  .closing {
+    padding: 1.2rem 1.1rem;
+  }
+  .contact-form,
+  .brevo-container {
+    padding: 1.2rem 1rem;
+  }
+  footer {
+    padding: 2rem 1rem;
+  }
+  /* Touch screens: no hover effects (they "stick" after a tap) */
+@media (hover: none) {
+  a:hover {
+    color: var(--text-strong);
+  }
+  a::after {
+    display: none;
+  }
+  a.card:hover,
+  .expandable .scroll-card:hover {
+    transform: none;
+  }
+  .btn-primary:hover    { background: var(--action); }
+  .btn-secondary:hover  { background: var(--action-alt); }
+  .btn-ghost:hover      { background: var(--section-strong); }
+}
+.topbar {
+  padding-block: 2.4rem;
+}
 }
