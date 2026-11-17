@@ -844,11 +844,11 @@ a:hover {
   .BE-lead, .MOVE-lead, .GATHER-lead {
     padding: 3rem 1.5rem;
     min-height: 60vh;
-    background-attachment: scroll;   /* phones don't handle "fixed" well */
+    background-attachment: fixed;
   }
 
   body {
-    background-attachment: scroll;   /* same fix for the page background */
+    background-attachment: fixed; 
   }
 
   .page {
