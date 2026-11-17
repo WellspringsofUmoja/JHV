@@ -194,10 +194,12 @@ section { padding: 1.5rem 1.5rem; }
 .sectionlight      { background-color: var(--section-light); }
 .sectionlighttrans { background-color: color-mix(in srgb, var(--section) 75%, transparent); }
 .sectionwarmtrans  { background-color: color-mix(in srgb, var(--section-warm) 75%, transparent); }
-.sectionwarm       { background-color: var(--section-warm); }
+.sectionwarm       { background-color: var(--section-warm); color: var(--text-inverse);  }
 .sectiondeep       { background-color: var(--section-deep); color: var(--text-inverse); }
 .sectionstrong     { background-color: var(--section-strong); color: var(--text-inverse); }
 .sectionstrong h2  { color: var(--text-inverse); }
+.sectiondeep h2  { color: var(--text-inverse); }
+.sectionwarm h2  { color: var(--text-inverse); }
 .sectionstrong .rail-hint,
 .sectionstrong .rail-empty {
   color: var(--text-inverse);
@@ -344,7 +346,7 @@ a.card {
   font-size: .72rem;
   text-transform: uppercase;
   letter-spacing: .12em;
-  color: var(--section-strong);
+  color: var(--text-inverse);
   background: var(--section);
   border-radius: 999px;
   padding: .2rem .8rem;
@@ -821,6 +823,9 @@ a:hover {
   color: var(--text-warm);
 }
 
+.lead-inverse {
+  color: var(--text-inverse);
+}
 
 /* =========================================================
    SMALLER SCREENS — kept at the very end so these rules
