@@ -1,0 +1,112 @@
+/* =========================================================
+   wellspring.css — layout pieces for The Wellspring panel
+   Load after expandable.css. Reusable in any detail panel.
+   ========================================================= */
+
+/* Smaller headings inside panels */
+.detail-panel h4 {
+  font-family: var(--font-head);
+  color: var(--text-strong);
+  font-size: 1.2rem;
+  margin: 2rem 0 .6rem;
+}
+.detail-panel h5 {
+  font-family: var(--font-head);
+  color: var(--text-strong);
+  font-size: 1.05rem;
+  margin-bottom: .4rem;
+}
+
+/* Column grids: 4 or 3 across, wrapping on smaller screens */
+.ws-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* leftover boxes sit in the middle */
+  gap: 1rem;
+  margin: 1rem 0 1.4rem;
+}
+.ws-grid > * { flex: 1 1 190px; max-width: 280px; }
+.ws-grid--three > * { flex-basis: 220px; max-width: 340px; }
+
+/* A single column tile */
+.ws-tile {
+  padding: 1.1rem 1.2rem;
+  background: var(--section);
+  border-top: 3px solid var(--action);
+  border-radius: var(--radius);
+  font-size: .95rem;
+}
+.ws-tile p + p { margin-top: .6rem; }
+
+.ws-icon {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: .3rem;
+}
+
+/* Big number + label at the bottom of a tile */
+.ws-stat {
+  margin-top: .9rem;
+  padding-top: .7rem;
+  border-top: 1px solid var(--border);
+  font-size: .85rem;
+}
+.ws-stat strong {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  color: var(--section-strong);
+  line-height: 1.1;
+}
+
+/* The three-number stat band */
+.ws-stats > div {
+  text-align: center;
+  padding: 1rem;
+}
+.ws-stats strong {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 2rem;
+  color: var(--section-strong);
+  line-height: 1.1;
+  margin-bottom: .3rem;
+}
+.ws-stats span { font-size: .88rem; }
+
+/* Offer tiles */
+.ws-num {
+  display: inline-block;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-weight: 700;
+  color: var(--action-alt);
+  margin-bottom: .3rem;
+}
+.ws-sub {
+  font-style: italic;
+  color: var(--text-strong);
+}
+
+/* Accordions inside a panel get a little breathing room */
+.detail-panel .deep-dive + .deep-dive { margin-top: .6rem; }
+
+/* Contact line */
+.ws-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  align-items: center;
+  font-weight: 600;
+}
+.ws-contact a { color: var(--section-strong); }
+
+.ws-img {
+  display: block;
+  width: 100%;
+  max-width: 520px;          /* how wide it can get */
+  height: auto;
+  margin: 1rem auto;         /* centers it */
+  border-radius: var(--radius);
+}

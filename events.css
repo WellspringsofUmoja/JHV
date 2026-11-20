@@ -1,0 +1,324 @@
+/* =========================================================
+   events.css — Upcoming events + moon calendar
+   Journey Home Vitals — load after style.css, pairs with events.js
+   ========================================================= */
+
+/* ===== Small link at the top of the page ===== */
+.events-pill {
+  display: inline-block;
+  margin-top: 1.4rem;
+  padding: .5rem 1.2rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-inverse) 85%, transparent);
+  color: var(--text-strong);
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease;
+}
+.events-pill:hover { transform: translateY(-2px); color: var(--text-strong); }
+
+/* ===== Event cards ===== */
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.event-card {
+  flex: 1 1 300px;
+  max-width: 520px;
+  color: var(--text);
+  text-align: left;
+}
+.event-card h3 { margin-bottom: .3rem; }
+.event-when {
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: .8rem;
+}
+.event-card p + p { margin-top: .6rem; }
+.event-actions {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+.event-more {
+  color: var(--section-strong);
+  font-weight: 600;
+  text-decoration: none;
+}
+.events-empty { font-style: italic; text-align: center; }
+
+/* ===== Calendar toggle ===== */
+.calendar-toggle {
+  margin-top: 2rem;
+  background: var(--text-inverse);
+  color: var(--text);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.calendar-toggle > summary {
+  cursor: pointer;
+  padding: 1rem 1.3rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  list-style: none;
+}
+.calendar-toggle > summary::-webkit-details-marker { display: none; }
+.calendar-toggle > summary::before {
+  content: '▸';
+  display: inline-block;
+  margin-right: .6rem;
+  transition: transform .2s ease;
+}
+.calendar-toggle[open] > summary::before { transform: rotate(90deg); }
+.calendar-toggle[open] > summary { border-bottom: 1px solid var(--border); }
+
+.jhv-calendar { padding: 1.2rem 1.3rem 1.4rem; }
+
+/* ===== Toolbar ===== */
+.cal-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: 1.2rem;
+}
+.cal-views {
+  display: inline-flex;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.cal-views button,
+.cal-nav button {
+  font: inherit;
+  border: none;
+  background: transparent;
+  color: var(--text-strong);
+  cursor: pointer;
+}
+.cal-views button {
+  padding: .4rem .95rem;
+  font-size: .88rem;
+  font-weight: 600;
+}
+.cal-views button.is-active {
+  background: var(--section-strong);
+  color: var(--text-inverse);
+}
+.cal-nav {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.cal-nav button {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  line-height: 1;
+  background: var(--section);
+}
+.cal-nav button:hover { background: var(--border); }
+.cal-title {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  color: var(--text-strong);
+  text-align: center;
+}
+
+/* ===== Year view ===== */
+.cal-year {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.cal-mini {
+  font: inherit;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  padding: .7rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: background .2s ease;
+}
+.cal-mini:hover { background: var(--section); }
+.cal-mini-title {
+  display: block;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin-bottom: .4rem;
+}
+.cal-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  font-size: .68rem;
+  text-align: center;
+  line-height: 1.7;
+}
+.cal-mini-grid .is-full { box-shadow: inset 0 0 0 1px var(--border-strong); border-radius: 50%; }
+.cal-mini-grid .has-event {
+  background: var(--action);
+  color: var(--text-inverse);
+  border-radius: 50%;
+  font-weight: 700;
+}
+.cal-mini-grid .is-today { text-decoration: underline; font-weight: 700; }
+
+/* ===== Month view ===== */
+.cal-month {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.cal-weekday {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  text-align: center;
+  color: var(--text-soft);
+  padding-bottom: .3rem;
+}
+.cal-day {
+  position: relative;
+  min-height: 5rem;
+  padding: .35rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: .82rem;
+  overflow: hidden;
+}
+.cal-day.is-blank { border: none; }
+.cal-day.has-event { background: color-mix(in srgb, var(--action) 14%, transparent); }
+.cal-day.is-today { box-shadow: inset 0 0 0 2px var(--section-strong); }
+.cal-daynum {
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  background: none;
+  color: var(--text-strong);
+  cursor: pointer;
+  padding: 0;
+}
+.cal-moon {
+  position: absolute;
+  top: .3rem;
+  right: .35rem;
+  font-size: .9rem;
+}
+.cal-events { margin-top: .25rem; }
+.cal-event {
+  display: block;
+  margin-top: .2rem;
+  padding: .15rem .4rem;
+  border-radius: 6px;
+  background: var(--action);
+  color: var(--text-inverse);
+  font-size: .72rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cal-event:hover { color: var(--text-inverse); filter: brightness(.92); }
+
+/* ===== Moon week view ===== */
+.cal-moon-intro {
+  font-style: italic;
+  margin-bottom: .8rem;
+}
+.cal-moon-days { list-style: none; }
+.cal-moon-days li {
+  display: grid;
+  grid-template-columns: 7.5rem 1.6rem 1fr;
+  align-items: center;
+  gap: .6rem;
+  padding: .55rem .4rem;
+  border-bottom: 1px solid var(--border);
+}
+.cal-moon-days li.has-event { background: color-mix(in srgb, var(--action) 14%, transparent); }
+.cal-moon-days li.is-today .cal-moon-date { text-decoration: underline; }
+.cal-moon-date { font-weight: 600; color: var(--text-strong); }
+.cal-moon-events .cal-event { display: inline-block; white-space: normal; font-size: .82rem; }
+
+/* ===== Legend ===== */
+.cal-legend {
+  margin-top: 1rem;
+  font-size: .78rem;
+  color: var(--text-soft);
+}
+.cal-dot {
+  display: inline-block;
+  width: .7rem;
+  height: .7rem;
+  border-radius: 50%;
+  background: var(--action);
+  vertical-align: middle;
+}
+
+/* ===== Phones ===== */
+@media (max-width: 600px) {
+  .jhv-calendar { padding: 1rem .7rem; }
+  .cal-toolbar { justify-content: center; }
+  .cal-day { min-height: 3.2rem; padding: .25rem; }
+  .cal-moon { font-size: .7rem; top: .2rem; right: .2rem; }
+  /* show a dot instead of the event title in small cells */
+  .cal-month .cal-event {
+    width: .6rem;
+    height: .6rem;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 0;
+  }
+  .cal-moon-days li { grid-template-columns: 6.2rem 1.4rem 1fr; }
+}
+
+/* ===== "More info" accordion on event cards ===== */
+.event-info {
+  margin-top: 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--text-inverse);
+}
+.event-info > summary {
+  cursor: pointer;
+  padding: .7rem 1rem;
+  font-weight: 700;
+  color: var(--section-strong);
+}
+.event-info[open] > summary { border-bottom: 1px solid var(--border); }
+.event-info dl,
+.event-info > p {
+  padding: .8rem 1rem;
+  margin: 0;
+}
+.event-info dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: .4rem 1rem;
+  font-size: .95rem;
+}
+.event-info dt {
+  font-weight: 700;
+  color: var(--text-strong);
+}
+.event-info dd { margin: 0; }
+
+@media (max-width: 480px) {
+  .event-info dl { grid-template-columns: 1fr; }
+  .event-info dd { margin-bottom: .5rem; }
+}

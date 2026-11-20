@@ -1,0 +1,671 @@
+/* =========================================================
+   wellspring-app.css — Gather by the Wellspring pH Water Reference
+   Built from the standalone app so it lives directly inside a page.
+   Every rule starts with #wsApp, so nothing here touches the rest
+   of the site, and the site's styles can't bleed into the app.
+   Load after style.css / expandable.css / wellspring.css.
+   ========================================================= */
+
+/* ── CSS VARIABLES ───────────────────────────────────────────────────── */
+#wsApp {
+  /* ---- Colors: borrowed from the website's own palette ----
+     Each line uses a site color first; the value after the comma
+     is the app's original, used only if the site color is missing. */
+  --ws-bg:          var(--section-light, #F7F3ED);          /* app background */
+  --ws-bg2:         color-mix(in srgb, var(--section, #F0EBE3) 55%, var(--section-light, #F7F3ED)); /* header, sidebar */
+  --ws-bg3:         var(--section, #F0EBE3);                /* search box, soft fills */
+  --ws-surface:     color-mix(in srgb, var(--section, #F0EBE3) 35%, var(--section-light, #FFFFFF)); /* cards */
+  --ws-border:      color-mix(in srgb, var(--border, #D8C8B4) 70%, transparent);
+  --ws-border-mid:  var(--border-strong, rgba(120,100,75,0.28));
+  --ws-text:        var(--text, #2C2820);
+  --ws-text2:       var(--text, #4A4238);
+  --ws-muted:       var(--text-soft, #7A7068);
+  --ws-hint:        color-mix(in srgb, var(--text-soft, #7A7068) 75%, transparent);
+
+  /* Accent colors */
+  --ws-sage:        var(--action-alt, #4E7260);              /* teal: active tabs, links */
+  --ws-sage-light:  color-mix(in srgb, var(--action-alt, #4E7260) 14%, var(--section-light, #F7F3ED));
+  --ws-sage-mid:    color-mix(in srgb, var(--action-alt, #4E7260) 55%, var(--section-light, #F7F3ED));
+  --ws-amber:       var(--action-hover, #B07A1A);             /* gold */
+  --ws-amber-light: color-mix(in srgb, var(--action, #B07A1A) 18%, var(--section-light, #F7F3ED));
+  --ws-terra:       var(--text-strong, #8A3E2E);              /* rust */
+  --ws-terra-light: color-mix(in srgb, var(--text-strong, #8A3E2E) 10%, var(--section-light, #F7F3ED));
+
+  /* pH level colors: kept distinct so each pH stays easy to tell apart */
+  --ws-blue:        #2E5F8A;
+  --ws-blue-light:  #E5EFF8;
+  --ws-purple:      #5E4A8A;
+  --ws-purple-light:#F0EAF8;
+  --ws-red:         #7A2828;
+  --ws-red-light:   #F5E8E8;
+
+  --ws-serif: var(--font-head, "DM Serif Display", Georgia, serif);
+  --ws-sans:  var(--font-body, "DM Sans", system-ui, sans-serif);
+  --ws-r: var(--radius, 10px);
+  --ws-shadow: var(--shadow, 0 1px 4px rgba(60,45,25,0.07));
+  --ws-shadow-hover: 0 4px 16px rgba(60,45,25,0.13);
+}
+
+#wsApp,
+#wsApp *,
+#wsApp *::before,
+#wsApp *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+#wsApp {
+  font-family: var(--ws-sans);
+  background: var(--ws-bg);
+  color: var(--ws-text);
+  
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ── DISCLAIMER ── */
+#wsApp .disclaimer-bar {
+  background: var(--ws-amber-light);
+  border-bottom: 1px solid #DDD0A0;
+  color: var(--ws-amber);
+  font-size: .72rem;
+  line-height: 1.55;
+  padding: .55rem 2rem;
+  display: flex; align-items: flex-start; gap: .5rem;
+  position: sticky; top: 0; z-index: 101;
+}
+#wsApp .disclaimer-bar svg { flex-shrink: 0; margin-top: 1px; opacity: .7; }
+
+/* ── HEADER ── */
+#wsApp .header {
+  background: var(--ws-bg2);
+  border-bottom: 1px solid var(--ws-border);
+  padding: 1.1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  position: static;
+}
+#wsApp .brand { display: flex; flex-direction: column; gap: 1px; }
+#wsApp .brand-name {
+  font-family: var(--ws-serif);
+  font-size: 1.35rem; font-weight: 400;
+  color: var(--ws-text); letter-spacing: .01em;
+}
+#wsApp .brand-sub { font-size: .65rem; color: var(--ws-muted); letter-spacing: .08em; text-transform: uppercase; }
+#wsApp .header-right { display: flex; align-items: center; gap: 1.5rem; }
+#wsApp .header-stats { display: flex; gap: 1.5rem; }
+#wsApp .hstat { display: flex; flex-direction: column; align-items: center; gap: 0; }
+#wsApp .hstat-num { font-family: var(--ws-serif); font-size: 1.2rem; color: var(--ws-sage); }
+#wsApp .hstat-label { font-size: .6rem; color: var(--ws-hint); letter-spacing: .07em; text-transform: uppercase; }
+
+/* ── UNIFIED SEARCH BAR ── */
+#wsApp .search-bar-wrap {
+  padding: .85rem 2rem;
+  background: var(--ws-bg2);
+  border-bottom: 1px solid var(--ws-border);
+  position: sticky; top: 62px; z-index: 99;
+}
+#wsApp .search-inner { position: relative; max-width: 600px; }
+#wsApp .search-icon {
+  position: absolute; left: 11px; top: 50%;
+  transform: translateY(-50%); color: var(--ws-hint);
+  pointer-events: none;
+}
+#wsApp #mainSearch {
+  width: 100%;
+  padding: .6rem .75rem .6rem 2.2rem;
+  border: 1px solid var(--ws-border-mid); border-radius: var(--ws-r);
+  font-family: var(--ws-sans); font-size: .875rem; font-weight: 300;
+  background: var(--ws-bg3); color: var(--ws-text);
+  outline: none; transition: all .2s;
+}
+#wsApp #mainSearch:focus { border-color: var(--ws-sage-mid); background: var(--ws-bg2); box-shadow: 0 0 0 3px rgba(74,140,110,.08); }
+#wsApp #mainSearch::placeholder { color: var(--ws-hint); }
+
+/* ── SEARCH RESULTS MODE ── */
+#wsApp .search-results-wrap { padding: 1.5rem 2rem; min-height: calc(100vh - 130px); }
+#wsApp .search-group-label {
+  font-size: .65rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ws-hint); margin-bottom: .75rem; padding-bottom: .4rem;
+  border-bottom: 1px solid var(--ws-border);
+}
+#wsApp .search-section { margin-bottom: 2rem; }
+
+/* ── LAYOUT ── */
+#wsApp .app-body {
+  display: grid; grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 130px);
+}
+
+/* ── SIDEBAR ── */
+#wsApp .sidebar {
+  background: var(--ws-bg2);
+  border-right: 1px solid var(--ws-border);
+  padding: 1.5rem 1.1rem;
+  position: sticky; top: 114px;
+  height: calc(100vh - 130px); overflow-y: auto;
+}
+#wsApp .filter-label {
+  font-size: .6rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ws-hint); margin-bottom: .6rem;
+}
+#wsApp .filter-group { margin-bottom: 1.5rem; }
+#wsApp .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+#wsApp .chip {
+  padding: 3px 10px; border-radius: 20px;
+  font-size: .7rem; font-weight: 300;
+  border: 1px solid var(--ws-border-mid);
+  background: transparent; color: var(--ws-muted);
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+  font-family: var(--ws-sans);
+}
+#wsApp .chip:hover { border-color: var(--ws-sage-mid); color: var(--ws-sage); background: var(--ws-sage-light); }
+#wsApp .chip.active { border-color: var(--ws-sage); background: var(--ws-sage-light); color: var(--ws-sage); font-weight: 400; }
+
+/* ── MAIN CONTENT ── */
+#wsApp .main { padding: 1.75rem 2rem; }
+
+/* ── TOP TABS ── */
+#wsApp .top-tabs {
+  display: flex; gap: 0; margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--ws-border);
+}
+#wsApp .top-tab {
+  padding: .7rem 1.4rem; border: none; background: none;
+  font-family: var(--ws-sans); font-size: .875rem; font-weight: 300;
+  color: var(--ws-muted); cursor: pointer; transition: all .18s;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  display: flex; align-items: center; gap: 7px;
+}
+#wsApp .top-tab:hover { color: var(--ws-text2); }
+#wsApp .top-tab.active { color: var(--ws-text); border-bottom-color: var(--ws-sage); font-weight: 400; }
+#wsApp .tab-badge {
+  font-size: .62rem; padding: 1px 7px; border-radius: 20px;
+  background: var(--ws-bg3); color: var(--ws-muted);
+}
+#wsApp .top-tab.active .tab-badge { background: var(--ws-sage-light); color: var(--ws-sage); }
+
+/* ── RESULTS META ── */
+#wsApp .results-meta { font-size: .72rem; color: var(--ws-hint); margin-bottom: 1rem; }
+
+/* ── USE CARDS ── */
+#wsApp .cards-grid { display: grid; gap: 7px; }
+#wsApp .use-card {
+  background: var(--ws-surface);
+  border: 1px solid var(--ws-border);
+  border-radius: var(--ws-r);
+  padding: .9rem 1.1rem .9rem 1.3rem;
+  transition: all .18s;
+  position: relative; overflow: hidden;
+  box-shadow: var(--ws-shadow);
+  animation: ws-fadeUp .15s ease forwards;
+}
+#wsApp .use-card:hover {
+  border-color: var(--ws-border-mid);
+  box-shadow: var(--ws-shadow-hover);
+  transform: translateY(-1px);
+}
+#wsApp .use-card::before {
+  content: ""; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 3px;
+  border-radius: 3px 0 0 3px;
+}
+#wsApp .ph-neutral .use-card::before { background: #2E6B38; }
+#wsApp .ph-slightAlk .use-card::before { background: #2E6B50; }
+#wsApp .ph-alkaline .use-card::before { background: var(--ws-blue); }
+#wsApp .ph-strongAlk .use-card::before { background: var(--ws-purple); }
+#wsApp .ph-acidic .use-card::before { background: var(--ws-terra); }
+#wsApp .ph-multiPh .use-card::before { background: linear-gradient(180deg, var(--ws-terra), var(--ws-red)); }
+#wsApp .ph-strongAcid .use-card::before { background: var(--ws-red); }
+
+#wsApp .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .6rem; margin-bottom: .35rem; }
+#wsApp .card-title { font-size: .875rem; font-weight: 400; color: var(--ws-text); line-height: 1.45; flex: 1; }
+#wsApp .ph-pill {
+  font-size: .62rem; font-weight: 400; padding: 2px 8px;
+  border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+  letter-spacing: .02em;
+}
+#wsApp .pill-neutral { background: #EAF5EC; color: #2E6B38;   border: 1px solid #B5DFC0; }
+#wsApp .pill-slightAlk { background: var(--ws-sage-light); color: var(--ws-sage); border: 1px solid #B5D8C8; }
+#wsApp .pill-alkaline { background: var(--ws-blue-light); color: var(--ws-blue); border: 1px solid #B5CDE0; }
+#wsApp .pill-strongAlk { background: var(--ws-purple-light); color: var(--ws-purple); border: 1px solid #C5B8E0; }
+#wsApp .pill-acidic { background: var(--ws-terra-light); color: var(--ws-terra); border: 1px solid #DEBBAA; }
+#wsApp .pill-multiPh { background: var(--ws-red-light); color: var(--ws-terra); border: 1px solid #D8B8B8; }
+#wsApp .pill-strongAcid { background: var(--ws-red-light); color: var(--ws-red); border: 1px solid #D8B8B8; }
+
+#wsApp .card-meta { font-size: .67rem; color: var(--ws-hint); text-transform: uppercase; letter-spacing: .04em; }
+#wsApp .card-replaces-label { font-size: .65rem; color: var(--ws-hint); margin-top: .35rem; text-transform: uppercase; letter-spacing: .04em; }
+#wsApp .card-replaces {
+  font-size: .78rem; color: var(--ws-muted); line-height: 1.5; margin-top: 2px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+#wsApp .card-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: .65rem; padding-top: .65rem; border-top: 1px solid var(--ws-border);
+}
+#wsApp .savings {
+  font-size: .72rem; font-weight: 500; color: var(--ws-sage);
+}
+#wsApp .claim-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: .65rem; font-weight: 300;
+  color: var(--ws-sage); text-decoration: none;
+  padding: 2px 8px; border-radius: 20px;
+  border: 1px solid var(--ws-border-mid); background: var(--ws-sage-light);
+  transition: all .15s; cursor: pointer; white-space: nowrap;
+}
+#wsApp .claim-link:hover { background: #C5ECD8; border-color: var(--ws-sage); }
+#wsApp .claim-link-arrow { font-size: .7rem; }
+
+/* ── CLAIMS SECTION ── */
+#wsApp .claims-cat-nav {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem;
+}
+#wsApp .cat-btn {
+  display: flex; align-items: center; gap: 7px;
+  padding: .45rem .9rem; border-radius: 20px;
+  font-family: var(--ws-sans); font-size: .78rem; font-weight: 300;
+  cursor: pointer; transition: all .18s;
+  border: 1px solid var(--ws-border-mid); background: transparent; color: var(--ws-muted);
+}
+#wsApp .cat-btn .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+#wsApp .cat-btn.active { font-weight: 400; }
+#wsApp .cat-btn-count { font-size: .65rem; font-family: monospace; }
+
+/* ── CLAIM CARDS ── */
+#wsApp .claim-card {
+  background: var(--ws-surface);
+  border-radius: var(--ws-r);
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: box-shadow .18s;
+  box-shadow: var(--ws-shadow);
+}
+#wsApp .claim-card:hover { box-shadow: var(--ws-shadow-hover); }
+#wsApp .claim-head {
+  padding: 1rem 1.2rem; cursor: pointer;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+  transition: background .15s; user-select: none;
+}
+#wsApp .claim-head:hover { background: var(--ws-bg3); }
+#wsApp .claim-title {
+  font-family: var(--ws-serif); font-size: 1.05rem; font-weight: 400;
+  color: var(--ws-text); line-height: 1.3;
+}
+#wsApp .claim-badge {
+  font-size: .62rem; padding: 2px 8px; border-radius: 20px;
+  flex-shrink: 0; margin-top: 3px; letter-spacing: .02em;
+}
+#wsApp .claim-summary {
+  font-size: .78rem; color: var(--ws-muted); line-height: 1.55; margin-top: 4px;
+}
+#wsApp .claim-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+#wsApp .ctag {
+  font-size: .62rem; padding: 2px 8px; border-radius: 20px;
+  background: var(--ws-sage-light); color: var(--ws-sage);
+  border: 1px solid #B5D8C8;
+}
+#wsApp .claim-toggle { font-size: 1.2rem; color: var(--ws-hint); flex-shrink: 0; padding-top: 3px; }
+
+#wsApp .claim-body { display: none; padding: 0 1.2rem 1.4rem; }
+#wsApp .claim-body.open { display: block; }
+
+#wsApp .content-tabs {
+  display: flex; gap: 0; border-bottom: 1px solid var(--ws-border); margin-bottom: 1rem;
+}
+#wsApp .ctab {
+  padding: .5rem 1rem; border: none; background: none;
+  font-family: var(--ws-sans); font-size: .78rem; font-weight: 300;
+  color: var(--ws-muted); cursor: pointer; transition: all .15s;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+#wsApp .ctab.active { color: var(--ws-text); font-weight: 400; }
+#wsApp .ctab.active[data-t="simple"] { border-color: var(--ws-sage); }
+#wsApp .ctab.active[data-t="scientific"] { border-color: var(--ws-amber); }
+#wsApp .ctab.active[data-t="sources"] { border-color: var(--ws-terra); }
+
+#wsApp .claim-panel { display: none; }
+#wsApp .claim-panel.active { display: block; }
+#wsApp .panel-box {
+  font-size: .83rem; color: var(--ws-text2); line-height: 1.75;
+  padding: .9rem 1rem; border-radius: 8px;
+  border-left: 3px solid;
+}
+#wsApp .panel-box.simple { background: var(--ws-sage-light); border-color: var(--ws-sage-mid); }
+#wsApp .panel-box.scientific { background: var(--ws-amber-light); border-color: var(--ws-amber); }
+#wsApp .panel-box.sources { background: var(--ws-terra-light); border-color: var(--ws-terra); }
+#wsApp .source-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+#wsApp .source-list li a {
+  font-size: .78rem; color: var(--ws-sage); text-decoration: none;
+  display: flex; align-items: flex-start; gap: 6px; line-height: 1.5;
+}
+#wsApp .source-list li a::before { content: "↗"; flex-shrink: 0; margin-top: 1px; font-size: .7rem; }
+#wsApp .source-list li a:hover { color: var(--ws-sage); text-decoration: underline; }
+
+/* ── EMPTY STATE ── */
+#wsApp .empty { text-align: center; padding: 5rem 2rem; }
+#wsApp .empty-glyph { font-family: var(--ws-serif); font-size: 2.5rem; color: var(--ws-hint); opacity: .35; margin-bottom: 1rem; }
+#wsApp .empty h3 { font-family: var(--ws-serif); font-size: 1rem; font-weight: 400; color: var(--ws-muted); margin-bottom: .4rem; }
+#wsApp .empty p { font-size: .78rem; color: var(--ws-hint); }
+
+/* ── SEARCH RESULT HIGHLIGHT ── */
+#wsApp .claim-card.highlighted { border: 1.5px solid var(--ws-sage-mid); box-shadow: 0 0 0 3px rgba(74,140,110,.1); }
+
+/* ── ANIMATIONS ── */
+@keyframes ws-fadeUp { from { opacity: 1; } to { opacity: 1; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  #wsApp .app-body { grid-template-columns: 1fr; }
+  #wsApp .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--ws-border); padding: 1rem; }
+  #wsApp .main { padding: 1.1rem; }
+  #wsApp .header { padding: .9rem 1rem; top: 25px; }
+  #wsApp .header-stats { display: none; }
+  #wsApp .search-bar-wrap { top: 62px; padding: .7rem 1rem; }
+  #wsApp .disclaimer-bar { padding: .5rem 1rem; }
+}
+
+/* ── PROTOCOL CARDS ── */
+#wsApp .proto-card {
+  background: var(--ws-surface); border: 1px solid var(--ws-border);
+  border-radius: var(--ws-r); overflow: hidden; margin-bottom: 10px;
+  box-shadow: var(--ws-shadow);
+}
+#wsApp .proto-card:hover { box-shadow: var(--ws-shadow-hover); }
+#wsApp .proto-head {
+  padding: 1.1rem 1.25rem; cursor: pointer;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+  transition: background .15s; user-select: none;
+}
+#wsApp .proto-head:hover { background: var(--ws-bg3); }
+#wsApp .proto-title { font-family: var(--ws-serif); font-size: 1.05rem; font-weight: 400; color: var(--ws-text); line-height: 1.3; }
+#wsApp .proto-cond { font-size: .75rem; color: var(--ws-muted); margin-top: 4px; }
+#wsApp .proto-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+#wsApp .ptag {
+  font-size: .65rem; padding: 2px 9px; border-radius: 20px;
+  background: var(--ws-sage-light); color: var(--ws-sage);
+  border: 1px solid #B8D8C8;
+}
+#wsApp .proto-toggle { font-size: 1.3rem; color: var(--ws-hint); flex-shrink: 0; padding-top: 2px; }
+#wsApp .proto-body { display: none; padding: 0 1.25rem 1.5rem; }
+#wsApp .proto-body.open { display: block; }
+#wsApp .proto-summary {
+  font-size: .875rem; color: var(--ws-text2); line-height: 1.75;
+  margin-bottom: 1.25rem; padding: 1rem 1.1rem;
+  background: var(--ws-bg3); border-radius: 8px;
+  border-left: 3px solid var(--ws-sage-mid);
+}
+#wsApp .steps-label {
+  font-size: .65rem; font-weight: 500; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--ws-hint); margin-bottom: .8rem;
+}
+#wsApp .steps { display: flex; flex-direction: column; gap: 8px; }
+#wsApp .step {
+  display: grid; grid-template-columns: auto 1fr; gap: 0 .9rem;
+  background: var(--ws-bg3); border-radius: 8px;
+  padding: .85rem 1rem; border: 1px solid var(--ws-border);
+  align-items: start;
+}
+#wsApp .step-n {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .72rem; font-weight: 500; flex-shrink: 0;
+  grid-row: span 2; align-self: center;
+}
+#wsApp .step-phase { font-size: .7rem; color: var(--ws-hint); grid-column: 2; margin-bottom: 3px; }
+#wsApp .step-badge {
+  font-size: .62rem; font-weight: 400; padding: 1px 7px;
+  border-radius: 10px; display: inline-block;
+  margin-left: 7px; vertical-align: middle;
+}
+#wsApp .step-action { font-size: .83rem; color: var(--ws-text2); line-height: 1.6; grid-column: 2; }
+#wsApp .proto-science {
+  margin-top: 1.25rem; padding: .9rem 1.1rem;
+  background: var(--ws-blue-light); border-radius: 8px;
+  border-left: 3px solid #8FB8D8;
+}
+#wsApp .sci-label {
+  font-size: .65rem; font-weight: 500; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ws-blue); margin-bottom: 5px;
+}
+#wsApp .sci-text { font-size: .78rem; color: var(--ws-blue); line-height: 1.6; opacity: .85; }
+#wsApp .proto-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: .68rem; font-weight: 400;
+  color: var(--ws-sage); background: var(--ws-sage-light);
+  border: 1px solid #B8D8C8; border-radius: 20px;
+  padding: 2px 9px; margin-top: .5rem;
+  cursor: pointer; transition: all .15s;
+}
+#wsApp .proto-link:hover { background: #C8ECD8; border-color: var(--ws-sage); }
+#wsApp .proto-link-arrow { font-size: .8rem; }
+
+/* ── STUDIES TAB ── */
+#wsApp #studiesView { padding: 0; }
+#wsApp .studies-hero {
+  background: linear-gradient(135deg, var(--ws-sage-light) 0%, var(--ws-bg3) 100%);
+  border: 1px solid var(--ws-border);
+  border-radius: var(--ws-r);
+  padding: 2rem 2rem 1.75rem;
+  margin-bottom: 1.5rem;
+}
+#wsApp .studies-hero-title {
+  font-family: var(--ws-serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--ws-text);
+  margin-bottom: .5rem;
+}
+#wsApp .studies-hero-sub {
+  font-size: .875rem;
+  color: var(--ws-text2);
+  line-height: 1.7;
+  max-width: 680px;
+  margin-bottom: 1.25rem;
+}
+#wsApp .studies-stat-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+#wsApp .studies-stat {
+  display: flex;
+  flex-direction: column;
+}
+#wsApp .studies-stat-num {
+  font-family: var(--ws-serif);
+  font-size: 1.8rem;
+  color: var(--ws-sage);
+  line-height: 1;
+}
+#wsApp .studies-stat-label {
+  font-size: .7rem;
+  color: var(--ws-muted);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-top: 3px;
+}
+#wsApp .studies-pubmed-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1.25rem;
+  padding: .6rem 1.25rem;
+  background: var(--ws-sage);
+  color: var(--text-inverse, #fff);
+  border-radius: 6px;
+  font-size: .82rem;
+  font-family: var(--ws-sans);
+  text-decoration: none;
+  transition: opacity .15s;
+  cursor: pointer;
+  border: none;
+}
+#wsApp .studies-pubmed-btn:hover { opacity: .88; }
+#wsApp .studies-section-head {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 1.75rem 0 1rem;
+}
+#wsApp .studies-section-badge {
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+#wsApp .badge-gold {
+  background: var(--ws-amber-light);
+  color: #8A6500;
+  border: 1px solid #E8C84A;
+}
+#wsApp .badge-peer {
+  background: var(--ws-sage-light);
+  color: var(--ws-sage);
+  border: 1px solid #B8D8C8;
+}
+#wsApp .studies-section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--ws-border);
+}
+#wsApp .studies-section-note {
+  font-size: .78rem;
+  color: var(--ws-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+#wsApp .study-card {
+  background: var(--ws-surface);
+  border: 1px solid var(--ws-border);
+  border-radius: var(--ws-r);
+  padding: 1rem 1.25rem;
+  margin-bottom: 8px;
+  transition: box-shadow .15s;
+}
+#wsApp .study-card:hover { box-shadow: var(--ws-shadow-hover); }
+#wsApp .study-card.gold-standard {
+  border-left: 3px solid #E8C84A;
+  background: var(--ws-surface);
+}
+#wsApp .study-card-title {
+  font-size: .88rem;
+  font-weight: 500;
+  color: var(--ws-text);
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+#wsApp .study-card-meta {
+  font-size: .73rem;
+  color: var(--ws-muted);
+  margin-bottom: 6px;
+}
+#wsApp .study-card-finding {
+  font-size: .8rem;
+  color: var(--ws-text2);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+#wsApp .study-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+#wsApp .study-tag {
+  font-size: .62rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--ws-bg3);
+  color: var(--ws-muted);
+  border: 1px solid var(--ws-border);
+}
+#wsApp .study-tag.gold { background: var(--ws-amber-light); color: #8A6500; border-color: #E8C84A; }
+#wsApp .study-link {
+  font-size: .72rem;
+  color: var(--ws-sage);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+#wsApp .study-link:hover { text-decoration: underline; }
+#wsApp .studies-disclaimer {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  background: var(--ws-bg3);
+  border-radius: 8px;
+  border: 1px solid var(--ws-border);
+  font-size: .75rem;
+  color: var(--ws-muted);
+  line-height: 1.7;
+}
+
+/* =========================================================
+   IN-PAGE ADJUSTMENTS
+   ========================================================= */
+
+/* The app's box inside the panel */
+#wsApp {
+  border: 1px solid var(--ws-border-mid);
+  border-radius: var(--ws-r);
+  overflow: hidden;
+  margin: .8rem 0;
+  text-align: left;
+}
+
+/* No sticky / full-screen pieces: the site header and the panel's
+   floating X already live at the top of the screen */
+#wsApp .disclaimer-bar,
+#wsApp .search-bar-wrap,
+#wsApp .header,
+#wsApp .sidebar {
+  position: static;
+  top: auto;
+}
+#wsApp .sidebar { height: auto; overflow: visible; }
+#wsApp .app-body,
+#wsApp .search-results-wrap { min-height: 0; }
+
+/* Shield the app from site-wide text styles */
+#wsApp h1, #wsApp h2, #wsApp h3, #wsApp h4 {
+  color: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+#wsApp p, #wsApp li { font-size: inherit; }
+#wsApp a::after { content: none; display: none; }
+#wsApp button, #wsApp input { font-family: inherit; }
+
+/* Let the main column shrink to fit the panel (no overflow) */
+#wsApp .app-body { grid-template-columns: 240px minmax(0, 1fr); }
+#wsApp .main { min-width: 0; }
+#wsApp .cards-grid { grid-template-columns: minmax(0, 1fr); }
+#wsApp .use-card,
+#wsApp .claim-card,
+#wsApp .proto-card,
+#wsApp .study-card { min-width: 0; overflow-wrap: break-word; }
+#wsApp .card-foot { flex-wrap: wrap; gap: .4rem .8rem; }
+#wsApp .studies-section-badge { white-space: normal; max-width: 100%; }
+
+/* Tabs scroll sideways if they don't fit */
+#wsApp .top-tabs { overflow-x: auto; scrollbar-width: none; }
+#wsApp .top-tabs::-webkit-scrollbar { display: none; }
+#wsApp .top-tab { flex-shrink: 0; }
+
+/* Stack the sidebar above the cards when the panel is narrow */
+@media (max-width: 900px) {
+  #wsApp .app-body { grid-template-columns: minmax(0, 1fr) !important; }
+  #wsApp .sidebar { border-right: none; border-bottom: 1px solid var(--ws-border); }
+}
+
+/* Phones: tighter spacing so the app uses the whole panel */
+@media (max-width: 600px) {
+  #wsApp .main,
+  #wsApp .search-results-wrap { padding: 1rem .8rem; }
+  #wsApp .sidebar { padding: 1rem .8rem; }
+  #wsApp .search-bar-wrap { padding: .7rem .8rem; }
+  #wsApp .header { padding: .9rem .8rem; }
+  #wsApp .disclaimer-bar { padding: .5rem .8rem; }
+}

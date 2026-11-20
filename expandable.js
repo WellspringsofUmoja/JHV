@@ -205,4 +205,20 @@
   document.querySelectorAll('.expandable').forEach(sec => sections.push(initSection(sec)));
   openFromHash();
   window.addEventListener('hashchange', openFromHash);
+    /* ---- Any link on the page that points at a panel opens it directly ----
+     (event cards, links inside text, etc. Cards use their own handler.) */
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || a.classList.contains('scroll-card')) return;
+    const id = decodeURIComponent(a.getAttribute('href').slice(1));
+    for (const s of sections) {
+      const panel = s.owns(id);
+      if (panel) {
+        e.preventDefault();
+        history.replaceState(null, '', '#' + id);
+        s.open(panel, { updateHash: false });
+        return;
+      }
+    }
+  });
 })();
